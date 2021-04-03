@@ -1,10 +1,12 @@
 import React from "react";
-import Layout from "../components/Layout";
+import { ContactSection, Layout, MainSection, ProjectsSection } from "../components";
 
 const Home: React.FC = () => {
   return (
     <Layout>
-      <main>hello world</main>
+      <MainSection />
+      <ProjectsSection />
+      <ContactSection />
     </Layout>
   );
 };

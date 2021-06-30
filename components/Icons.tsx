@@ -50,11 +50,11 @@ export const GitHubIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   return (
     <Icon
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" />
@@ -69,11 +69,11 @@ export const MailIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" /> <rect x="3" y="5" width="18" height="14" rx="2" />

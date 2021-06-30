@@ -12,9 +12,11 @@ const MainSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) 
         <HandWavingIcon width="40" height="40" viewBox="0 0 40 40" className="ml-4" />
       </div>
 
+      <p className="mt-4 text-lg">My name is Leo Ding Hao. </p>
+
       <p className="mt-6 font-light">
-        My name is Leo Ding Hao. I am an aspiring software engineer who is interested in front-end
-        development.
+        I am an aspiring software engineer who is interested in front-end development. All of my
+        projects are listed on <a className="textlink">Github</a> if you are interested.
       </p>
     </section>
   );

@@ -40,16 +40,28 @@ const ContactSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props 
         </div>
         <div className="flex px-8 justify-around mt-8">
           <div className="flex items-center flex-1 justify-center">
-            <div className="p-2 rounded-full w-min bg-gray-100">
-              <GitHubIcon width="32" height="32" className="text-gray-700" />
-            </div>
-            <span className="ml-2">GitHub</span>
+            <a href="https://github.com/leo-dh" target="_blank" rel="noreferrer">
+              <div className="p-2 rounded-full w-min bg-gray-100">
+                <GitHubIcon width="32" height="32" className="text-gray-700" />
+              </div>
+            </a>
+            <span className="ml-2">
+              <a href="https://github.com/leo-dh" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </span>
           </div>
           <div className="flex items-center flex-1 justify-center">
-            <div className="p-2 rounded-full w-min bg-gray-100">
-              <MailIcon width="32" height="32" className="text-gray-700" />
-            </div>
-            <span className="ml-2">Email</span>
+            <a href="mailto:leo.ding.hao.2014@gmail.com" target="_blank" rel="noreferrer">
+              <div className="p-2 rounded-full w-min bg-gray-100">
+                <MailIcon width="32" height="32" className="text-gray-700" />
+              </div>
+            </a>
+            <span className="ml-2">
+              <a href="mailto:leo.ding.hao.2014@gmail.com" target="_blank" rel="noreferrer">
+                Email
+              </a>
+            </span>
           </div>
         </div>
       </div>

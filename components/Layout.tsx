@@ -3,12 +3,12 @@ import Head from "next/head";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>{children}</main>
+      <main className="container">{children}</main>
     </div>
   );
 };

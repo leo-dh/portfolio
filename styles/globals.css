@@ -1,4 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.textlink {
+  @apply relative;
+}
+
+.textlink::after {
+  @apply absolute top-[60%] z-[-1] left-[-0.1em] right-[-0.1em] bottom-0 bg-purple-300;
+  content: "";
+  transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
+}
+
+.textlink:hover::after {
+  @apply top-0;
+}

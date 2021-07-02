@@ -94,3 +94,19 @@ export const MenuIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
     </Icon>
   );
 };
+
+export const ChevronRightIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
+  return (
+    <Icon className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+    </Icon>
+  );
+};
+
+export const CrossIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
+  return (
+    <Icon fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+    </Icon>
+  );
+};

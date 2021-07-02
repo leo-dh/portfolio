@@ -7,6 +7,7 @@ const ROUTES = [
   { href: "/", title: "Main" },
   { href: "/projects", title: "Projects" },
   { href: "/about", title: "About Me" },
+  { href: "/contact", title: "Contact Me" },
 ];
 
 const navVariants: Variants = {
@@ -75,6 +76,7 @@ const Navigation: React.FC = () => {
         className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-blue-200 `}
         onClick={toggleMenu}
       >
+        {/* TODO Animate MenuIcon */}
         <MenuIcon className="text-gray-700 h-5 w-5" />
       </button>
       <AnimatePresence>
@@ -106,6 +108,7 @@ const Navigation: React.FC = () => {
               animate="open"
               exit="close"
             >
+              {/* TODO create style for Contact */}
               {ROUTES.map(({ href, title }) => (
                 <motion.li
                   key={href}

@@ -10,7 +10,7 @@ const Layout: React.FC = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      <main className="container">{children}</main>
+      <main className="container mx-auto">{children}</main>
     </div>
   );
 };

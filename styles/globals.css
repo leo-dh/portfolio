@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .textlink {
-  @apply relative;
+  @apply relative cursor-pointer;
 }
 
 .textlink::after {
@@ -15,4 +15,14 @@
 
 .textlink:hover::after {
   @apply top-0;
+}
+
+/* IE, Edge, Firefox */
+.hide-scroll-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+/* Chrome, Safari, Opera */
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
 }

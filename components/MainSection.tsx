@@ -1,5 +1,6 @@
 import React, { HTMLProps } from "react";
 import { HandWavingIcon } from "./Icons";
+import { GITHUB_PROFILE } from "../utils/PublicData";
 
 const MainSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) => {
   return (
@@ -16,7 +17,11 @@ const MainSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) 
 
       <p className="mt-6 font-light">
         I am an aspiring software engineer who is interested in front-end development. All of my
-        projects are listed on <a className="textlink">Github</a> if you are interested.
+        projects are listed on{" "}
+        <a className="textlink" href={GITHUB_PROFILE} target="_blank" rel="noreferrer">
+          Github
+        </a>{" "}
+        if you are interested.
       </p>
     </section>
   );

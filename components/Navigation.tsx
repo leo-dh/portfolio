@@ -118,7 +118,7 @@ const Navigation: React.FC = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed w-full h-full bg-black/75 z-10 cursor-pointer"
+            className="fixed w-full h-full bg-black/60 z-10 cursor-pointer"
             id="overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

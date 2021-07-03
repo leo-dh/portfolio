@@ -34,10 +34,9 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
               onClick={() => setSelectedId(index)}
             />
           ))}
-          {/* TODO Add last item as more */}
           <li className="flex-shrink-0">
             <Link href="/projects">
-              <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-[1px] border-gray-600 items-center justify-center">
+              <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 items-center justify-center">
                 <ChevronRightIcon />
                 <span className="tracking-wider">more</span>
               </a>

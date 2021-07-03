@@ -14,7 +14,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ callback, index }) => {
   return (
     <>
       <motion.div
-        className="fixed z-50 top-0 bottom-0 left-0 right-0 bg-black/75 cursor-pointer"
+        className="fixed z-50 top-0 bottom-0 left-0 right-0 bg-black/60 cursor-pointer"
         onClick={callback}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -54,12 +54,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ callback, index }) => {
               </motion.div>
             </motion.div>
           </motion.div>
-          <motion.div className="pt-20 bg-gray-700 px-4 text-white">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem alias facilis culpa
-            commodi nam placeat error quidem ipsa officia recusandae! Consequuntur aliquam eos
-            explicabo nesciunt exercitationem, nulla voluptatum modi dignissimos nisi expedita
-            molestias officia impedit culpa. Aliquam reiciendis optio, officia culpa soluta ducimus
-            laboriosam fuga enim ipsum, quidem animi ut.
+          <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col">
+            <div className="border-l-4 border-jungle-green-500 font-bold pl-4 text-lg mt-28">
+              What is it?
+            </div>
+            <p className="mt-4 text-sm">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem alias facilis culpa
+              commodi nam placeat error quidem ipsa officia recusandae!
+            </p>
+            <div className="mt-16 border-l-4 border-jungle-green-500 font-bold pl-4 text-lg">
+              Links
+            </div>
+            <p className="mt-4 text-sm">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem alias facilis culpa
+              commodi nam placeat error quidem ipsa officia recusandae!
+            </p>
           </motion.div>
         </motion.div>
       </div>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { SVGProps, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { MenuIcon } from "./Icons";
+import { ContactIcon } from ".";
 
 const ROUTES = [
   { href: "/", title: "Main" },
@@ -64,6 +64,42 @@ const listVariants: Variants = {
   },
 };
 
+const AnimatedMenuIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
+  return (
+    <svg
+      fill="currentColor"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      {...props}
+    >
+      <motion.path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        variants={{ close: { d: "M4 6l16 0" }, open: { d: "M6 6l12 12" } }}
+        // transition={{ duration: 0.3 }}
+      />
+      <motion.path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        variants={{ close: { opacity: 1 }, open: { opacity: 0 } }}
+        transition={{ duration: 0.1 }}
+        d="M4 12h16"
+      />
+      <motion.path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        variants={{ close: { d: "M4 18l16 0" }, open: { d: "M6 18l12 -12" } }}
+        // transition={{ duration: 0.3 }}
+      />
+    </svg>
+  );
+};
+
 const Navigation: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = (): void => {
@@ -72,13 +108,13 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <button
-        className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-blue-200 `}
+      <motion.button
+        className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-jungle-green-500 `}
         onClick={toggleMenu}
+        animate={isMenuOpen ? "open" : "close"}
       >
-        {/* TODO Animate MenuIcon */}
-        <MenuIcon className="text-gray-700 h-5 w-5" />
-      </button>
+        <AnimatedMenuIcon className="text-gray-700 h-5 w-5" />
+      </motion.button>
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -86,38 +122,51 @@ const Navigation: React.FC = () => {
             id="overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, transition: { delay: 0.2 } }}
             onClick={toggleMenu}
           ></motion.div>
         )}
       </AnimatePresence>
       <motion.nav
-        className={`fixed overflow-hidden flex bottom-0 right-0 z-20 bg-blue-200 ${
+        className={`fixed overflow-hidden flex bottom-0 right-0 z-20 bg-jungle-green-500 ${
           isMenuOpen ? "shadow-lg" : "shadow-md"
         }`}
         animate={isMenuOpen ? "open" : "close"}
+        initial={false}
         variants={navVariants}
         layout
       >
         <AnimatePresence>
           {isMenuOpen && (
             <motion.ul
-              className="flex flex-col justify-center items-center w-screen py-4 h-96"
+              className="flex flex-col justify-center items-center w-screen py-4 h-96 space-y-2"
               variants={listVariants}
               initial="close"
               animate="open"
               exit="close"
             >
-              {/* TODO create style for Contact */}
-              {ROUTES.map(({ href, title }) => (
-                <motion.li
-                  key={href}
-                  variants={listItemVariants}
-                  className="py-2 uppercase font-bold"
-                >
-                  <Link href={href}>{title}</Link>
-                </motion.li>
-              ))}
+              {ROUTES.map(({ href, title }) => {
+                return href === "/contact" ? (
+                  <motion.li key={href} variants={listItemVariants}>
+                    <Link href={href}>
+                      <a className="flex uppercase font-bold bg-jungle-green-200 rounded-md overflow-hidden items-center mt-4">
+                        <div className="bg-jungle-green-600 p-2 text-white">
+                          <ContactIcon />
+                        </div>
+                        <span className="mx-3 text-shark-700">{title}</span>
+                      </a>
+                    </Link>
+                  </motion.li>
+                ) : (
+                  <motion.li
+                    key={href}
+                    variants={listItemVariants}
+                    className="py-2 uppercase font-bold text-shark-700"
+                  >
+                    <Link href={href}>{title}</Link>
+                  </motion.li>
+                );
+              })}
             </motion.ul>
           )}
         </AnimatePresence>

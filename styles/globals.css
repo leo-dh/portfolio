@@ -4,11 +4,11 @@
 @tailwind utilities;
 
 .textlink {
-  @apply relative cursor-pointer;
+  @apply relative cursor-pointer z-0;
 }
 
 .textlink::after {
-  @apply absolute top-[60%] z-[-1] left-[-0.1em] right-[-0.1em] bottom-0 bg-purple-300;
+  @apply absolute top-[60%] z-[-1] left-[-0.1em] right-[-0.1em] bottom-0 bg-jungle-green-700;
   content: "";
   transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
 }

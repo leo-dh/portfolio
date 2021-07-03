@@ -2,13 +2,15 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { CrossIcon } from "./Icons";
+import { PROJECTS_DETAILS } from "../utils/PublicData";
 
 interface ProjectModalProps {
   callback: () => void;
+  index: number | null;
 }
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ callback }) => {
-  const tags = ["TypeScript", "Vue", "SCSS"];
+const ProjectModal: React.FC<ProjectModalProps> = ({ callback, index }) => {
+  const { tags, title } = PROJECTS_DETAILS[index ?? 0];
   return (
     <>
       <motion.div
@@ -16,11 +18,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ callback }) => {
         onClick={callback}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        exit={{ opacity: 0, transition: { duration: 0.15 } }}
         transition={{ duration: 0.2, delay: 0.15 }}
       ></motion.div>
       <div className="fixed w-[90vw] h-[80vh] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-[60]">
-        <motion.div className="flex flex-col overflow-y-scroll h-full rounded-lg" layoutId="card">
+        <motion.div
+          className="flex flex-col overflow-y-scroll h-full rounded-lg"
+          layoutId={`card-${index}`}
+        >
           <motion.div
             className="p-2 bg-white absolute top-0 right-0 rounded-tr-lg rounded-bl-lg z-[61] cursor-pointer"
             onClick={callback}
@@ -29,15 +34,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ callback }) => {
             exit={{ opacity: 0, transition: { duration: 0.15 } }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
-            <CrossIcon className="w-4 h-4" />
+            <CrossIcon className="w-4 h-4 text-gray-800" />
           </motion.div>
-          <motion.div className="h-56 relative flex-shrink-0" layoutId="image">
+          <motion.div className="h-56 relative flex-shrink-0" layoutId={`image-${index}`}>
             <Image src="/thumbnails/citypop.jpeg" layout="fill" objectFit="cover" />
             <motion.div
               className="absolute -bottom-16 left-4 flex flex-col text-white"
-              layoutId="content"
+              layoutId={`content-${index}`}
             >
-              <motion.p className="font-light">CityPop Landing Page</motion.p>
+              <motion.p className="font-light">{title}</motion.p>
               <motion.div className="gap-x-2 flex flex-wrap items-center mt-2">
                 {tags.map((tag, index) => {
                   return (

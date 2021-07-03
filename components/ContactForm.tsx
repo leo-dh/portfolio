@@ -1,10 +1,10 @@
-import React, { HTMLProps } from "react";
-import { GitHubIcon, MailIcon } from "./Icons";
+import React from "react";
+import { GitHubIcon, MailIcon } from ".";
 
-const ContactSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) => {
+const ContactForm: React.FC = () => {
   return (
-    <section className={`min-h-screen flex flex-col py-12 ${className}`} {...props}>
-      <h1 className="text-5xl font-black text-gray-400 uppercase">Contact</h1>
+    <>
+      <h1 className="text-5xl font-black uppercase">Contact</h1>
       <div className="flex flex-col h-full justify-center flex-grow mt-12">
         <div className="px-8 rounded flex flex-col">
           <p className="text-sm font-light italic border-l-4 border-gray-400 pl-2">
@@ -12,28 +12,30 @@ const ContactSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props 
             message below. :)
           </p>
           <div className="flex flex-col mt-8">
-            <label htmlFor="EmailInput" className="text-sm text-gray-600 font-thin">
+            <label htmlFor="EmailInput" className="text-sm font-thin">
               Email
             </label>
             <input
               type="text"
               id="EmailInput"
-              className="rounded border-gray-300 border py-1 px-2 text-gray-700 outline-none mt-1"
+              className="rounded py-1 px-2 bg-shark-400 outline-none mt-1"
             />
           </div>
           <div className="flex flex-col mt-4">
-            <label htmlFor="MessageInput" className="text-sm text-gray-600 font-thin">
+            <label htmlFor="MessageInput" className="text-sm font-thin">
               Message
             </label>
             <textarea
               name=""
               id="MessageInput"
-              className="rounded border-gray-300 border py-1 px-2 text-gray-700 outline-none mt-1"
+              className="rounded py-1 px-2 bg-shark-400 outline-none mt-1"
               rows={4}
             ></textarea>
           </div>
-          <button className="rounded bg-gray-400 px-3 py-2 mt-4 text-gray-800">Submit</button>
-          <span className="text-xs text-gray-600 mt-3 ">
+          <button className="rounded font-bold bg-jungle-green-500 px-3 py-2 mt-4 text-shark-500">
+            Submit
+          </button>
+          <span className="text-xs text-gray-500 mt-3 ">
             I will try to respond within 3 working days. If the matter is urgent do consider sending
             me a direct email.
           </span>
@@ -65,8 +67,8 @@ const ContactSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props 
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
-export default ContactSection;
+export default ContactForm;

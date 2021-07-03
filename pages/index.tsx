@@ -1,12 +1,12 @@
 import React from "react";
-import { ContactSection, Layout, MainSection, ProjectsSection } from "../components";
+import { OtherSection, Layout, MainSection, ProjectsSection } from "../components";
 
 const Home: React.FC = () => {
   return (
     <Layout>
       <MainSection />
       <ProjectsSection />
-      <ContactSection />
+      <OtherSection />
     </Layout>
   );
 };

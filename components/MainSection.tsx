@@ -19,7 +19,7 @@ const MainSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) 
         I am an aspiring software engineer who is interested in front-end development. All of my
         projects are listed on{" "}
         <a className="textlink" href={GITHUB_PROFILE} target="_blank" rel="noreferrer">
-          Github
+          GitHub
         </a>{" "}
         if you are interested.
       </p>

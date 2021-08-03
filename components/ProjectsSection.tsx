@@ -11,7 +11,7 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
   }, [selectedId]);
   return (
     <section className={`flex flex-col py-12 ${className}`} {...props}>
-      <div className="flex items-end">
+      <div className="flex items-end ml-8">
         <h1 className="text-4xl font-black uppercase">Projects </h1>
         <Link href="/projects">
           <a className="font-light tracking-wider ml-4">
@@ -25,7 +25,7 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
             <ProjectModal index={selectedId} callback={() => setSelectedId(null)} />
           )}
         </AnimatePresence>
-        <ul className="mt-12 px-8 flex overflow-x-scroll hide-scroll-bar space-x-4">
+        <ul className="py-8 px-8 flex overflow-x-scroll hide-scroll-bar space-x-4">
           {PROJECTS_DETAILS.map((project, index) => (
             <ProjectCard
               index={index}

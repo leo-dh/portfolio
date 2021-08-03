@@ -26,3 +26,7 @@
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
 }
+
+::selection {
+  @apply bg-jungle-green-700;
+}

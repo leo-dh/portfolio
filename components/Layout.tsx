@@ -4,13 +4,13 @@ import Navigation from "./Navigation";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div>
+    <div className="bg-shark-500">
       <Head>
-        <title>Create Next App</title>
+        <title>leodh</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      <main className="container mx-auto bg-shark-500 text-gray-300">{children}</main>
+      <main className="container mx-auto text-gray-300">{children}</main>
     </div>
   );
 };

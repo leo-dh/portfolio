@@ -8,9 +8,12 @@ interface ProjectCardProps extends HTMLProps<HTMLLIElement> {
   index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index }) => {
   return (
-    <li className="flex-shrink-0 cursor-pointer" {...props}>
+    <motion.li
+      className="flex-shrink-0 cursor-pointer"
+      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+    >
       <motion.div
         className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600"
         layoutId={`card-${index}`}
@@ -34,7 +37,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props 
           </motion.div>
         </motion.div>
       </motion.div>
-    </li>
+    </motion.li>
   );
 };
 

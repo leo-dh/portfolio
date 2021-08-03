@@ -1,22 +1,15 @@
-import React, { SVGProps, useState } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ContactIcon } from ".";
-
-const ROUTES = [
-  { href: "/", title: "Main" },
-  { href: "/projects", title: "Projects" },
-  { href: "/about", title: "About Me" },
-  { href: "/contact", title: "Contact Me" },
-];
+import Link from "next/link";
+import ROUTES from "@/utils/routes";
+import { ContactIcon } from "@/components/Icons";
+import AnimatedMenuIcon from "./AnimatedMenuIcon";
 
 const navVariants: Variants = {
   open: {
-    width: "100%",
-    height: "auto",
-    right: "0px",
-    bottom: "-16px",
-    borderRadius: "5%",
+    width: "300px",
+    height: "100%",
+    borderTopRightRadius: "0.5rem",
     transition: {
       type: "spring",
       stiffness: 400,
@@ -26,9 +19,7 @@ const navVariants: Variants = {
   close: {
     width: "52px",
     height: "52px",
-    right: "16px",
-    bottom: "16px",
-    borderRadius: "50%",
+    borderTopRightRadius: "0rem",
     transition: {
       type: "spring",
       stiffness: 400,
@@ -63,53 +54,15 @@ const listVariants: Variants = {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 };
-
-const AnimatedMenuIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
-  return (
-    <svg
-      fill="currentColor"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      {...props}
-    >
-      <motion.path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        variants={{ close: { d: "M4 6l16 0" }, open: { d: "M6 6l12 12" } }}
-        // transition={{ duration: 0.3 }}
-      />
-      <motion.path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        variants={{ close: { opacity: 1 }, open: { opacity: 0 } }}
-        transition={{ duration: 0.1 }}
-        d="M4 12h16"
-      />
-      <motion.path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        variants={{ close: { d: "M4 18l16 0" }, open: { d: "M6 18l12 -12" } }}
-        // transition={{ duration: 0.3 }}
-      />
-    </svg>
-  );
-};
-
-const Navigation: React.FC = () => {
+const TabletNavigation: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = (): void => {
     setMenuOpen(!isMenuOpen);
   };
-
   return (
     <>
       <motion.button
-        className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-jungle-green-500 `}
+        className={`fixed top-0 left-0 p-4 rounded-br-lg z-30 bg-jungle-green-500`}
         onClick={toggleMenu}
         animate={isMenuOpen ? "open" : "close"}
       >
@@ -128,7 +81,7 @@ const Navigation: React.FC = () => {
         )}
       </AnimatePresence>
       <motion.nav
-        className={`fixed overflow-hidden flex bottom-0 right-0 z-20 bg-jungle-green-500 ${
+        className={`fixed overflow-hidden flex top-0 left-0 z-20 rounded-br-lg bg-jungle-green-500 ${
           isMenuOpen ? "shadow-lg" : "shadow-md"
         }`}
         animate={isMenuOpen ? "open" : "close"}
@@ -139,7 +92,7 @@ const Navigation: React.FC = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.ul
-              className="flex flex-col justify-center items-center w-screen py-4 h-96 space-y-2"
+              className="flex flex-col justify-center items-end w-screen py-4 space-y-2 text-2xl px-8"
               variants={listVariants}
               initial="close"
               animate="open"
@@ -153,7 +106,7 @@ const Navigation: React.FC = () => {
                         <div className="bg-jungle-green-600 p-2 text-white">
                           <ContactIcon />
                         </div>
-                        <span className="mx-3 text-shark-700">{title}</span>
+                        <span className="mx-3 text-shark-700 text-right">{title}</span>
                       </a>
                     </Link>
                   </motion.li>
@@ -175,4 +128,4 @@ const Navigation: React.FC = () => {
   );
 };
 
-export default Navigation;
+export default TabletNavigation;

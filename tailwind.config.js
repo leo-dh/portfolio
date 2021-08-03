@@ -47,7 +47,7 @@ module.exports = {
           900: "#79352e",
         },
       },
-      screen: {
+      screens: {
         tablet: "600px",
         desktop: "1280px",
         widescreen: "1920px",

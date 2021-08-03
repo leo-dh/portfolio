@@ -18,7 +18,7 @@ const LINKS = [
 const OtherSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) => {
   return (
     <section className={`flex flex-col py-12 ${className}`} {...props}>
-      <h1 className="text-4xl font-black uppercase">Other</h1>
+      <h1 className="text-4xl font-black uppercase ml-8">Other</h1>
       <div className="flex flex-col px-8 space-y-2 mt-8">
         {LINKS.map(({ title, href, icon }, index) => (
           <Link href={href} key={index}>

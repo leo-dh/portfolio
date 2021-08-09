@@ -1,6 +1,6 @@
 import React, { useState, HTMLProps, useEffect } from "react";
 import Link from "next/link";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { ProjectCard, ProjectModal, ChevronRightIcon } from ".";
 import { PROJECTS_DETAILS } from "../utils/PublicData";
 
@@ -11,7 +11,7 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
   }, [selectedId]);
   return (
     <section className={`flex flex-col py-12 ${className}`} {...props}>
-      <div className="flex items-end ml-8">
+      <div className="flex items-end ml-8 tablet:ml-16">
         <h1 className="text-4xl font-black uppercase">Projects </h1>
         <Link href="/projects">
           <a className="font-light tracking-wider ml-4">
@@ -25,7 +25,7 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
             <ProjectModal index={selectedId} callback={() => setSelectedId(null)} />
           )}
         </AnimatePresence>
-        <ul className="py-8 px-8 flex overflow-x-scroll hide-scroll-bar space-x-4">
+        <ul className="py-8 px-8 flex overflow-x-scroll hide-scroll-bar space-x-4 tablet:px-16">
           {PROJECTS_DETAILS.map((project, index) => (
             <ProjectCard
               index={index}
@@ -34,14 +34,17 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
               onClick={() => setSelectedId(index)}
             />
           ))}
-          <li className="flex-shrink-0">
+          <motion.li
+            className="flex-shrink-0"
+            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+          >
             <Link href="/projects">
-              <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 items-center justify-center">
+              <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 items-center justify-center tablet:h-72 tablet:w-72">
                 <ChevronRightIcon />
                 <span className="tracking-wider">more</span>
               </a>
             </Link>
-          </li>
+          </motion.li>
         </ul>
       </AnimateSharedLayout>
     </section>

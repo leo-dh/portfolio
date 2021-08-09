@@ -1,21 +1,22 @@
-import React, { HTMLProps } from "react";
+import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 
-interface ProjectCardProps extends HTMLProps<HTMLLIElement> {
+interface ProjectCardProps extends HTMLMotionProps<"li"> {
   title: string;
   tags: string[];
   index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props }) => {
   return (
     <motion.li
       className="flex-shrink-0 cursor-pointer"
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+      {...props}
     >
       <motion.div
-        className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600"
+        className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 tablet:w-72 tablet:h-72"
         layoutId={`card-${index}`}
       >
         <motion.div className="h-full relative" layoutId={`image-${index}`}>

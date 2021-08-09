@@ -36,7 +36,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ callback, index }) => {
           >
             <CrossIcon className="w-4 h-4 text-gray-800" />
           </motion.div>
-          <motion.div className="h-56 relative flex-shrink-0" layoutId={`image-${index}`}>
+          <motion.div
+            className="h-56 tablet:h-64 relative flex-shrink-0"
+            layoutId={`image-${index}`}
+          >
             <Image src="/thumbnails/citypop.jpeg" layout="fill" objectFit="cover" />
             <motion.div
               className="absolute -bottom-16 left-4 flex flex-col text-white"

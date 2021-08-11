@@ -4,7 +4,7 @@ import { ContactIcon } from "../Icons";
 
 const DesktopNavigation = (): JSX.Element => {
   return (
-    <nav className="fixed w-[320px] h-full">
+    <nav className="fixed w-desktop-nav h-full">
       <ul className="flex flex-col items-end justify-center h-full px-8 space-y-2 text-2xl">
         {ROUTES.map(({ href, title }) => {
           return href === "/contact" ? (

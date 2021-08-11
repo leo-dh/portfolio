@@ -65,6 +65,9 @@ module.exports = {
         desktop: "1280px",
         widescreen: "1920px",
       },
+      spacing: {
+        "desktop-nav": "360px",
+      },
       keyframes: {
         "fade-in": {
           "0%": {

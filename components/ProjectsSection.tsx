@@ -1,7 +1,7 @@
 import React, { useState, HTMLProps, useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { ProjectCard, ProjectModal, ChevronRightIcon } from ".";
+import { ProjectCard, ProjectModal, ChevronRightIcon, EmptyCard } from ".";
 import { PROJECTS_DETAILS } from "../utils/PublicData";
 
 const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) => {
@@ -34,17 +34,7 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
               onClick={() => setSelectedId(index)}
             />
           ))}
-          <motion.li
-            className="flex-shrink-0"
-            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-          >
-            <Link href="/projects">
-              <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 items-center justify-center tablet:h-72 tablet:w-72">
-                <ChevronRightIcon />
-                <span className="tracking-wider">more</span>
-              </a>
-            </Link>
-          </motion.li>
+          <EmptyCard className="desktop:hidden" />
         </ul>
       </AnimateSharedLayout>
     </section>

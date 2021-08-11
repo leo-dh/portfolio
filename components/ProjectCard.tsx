@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion, HTMLMotionProps } from "framer-motion";
+import Link from "next/link";
+import { ChevronRightIcon } from "./Icons";
 
 interface ProjectCardProps extends HTMLMotionProps<"li"> {
   title: string;
@@ -8,13 +10,34 @@ interface ProjectCardProps extends HTMLMotionProps<"li"> {
   index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props }) => {
+const CardContainer: React.FC<HTMLMotionProps<"li">> = ({ children, className, ...props }) => {
   return (
     <motion.li
-      className="flex-shrink-0 cursor-pointer"
+      className={`flex-shrink-0 cursor-pointer ${className}`}
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
       {...props}
     >
+      {children}
+    </motion.li>
+  );
+};
+
+const EmptyCard: React.FC<HTMLMotionProps<"li">> = ({ ...props }) => {
+  return (
+    <CardContainer {...props}>
+      <Link href="/projects">
+        <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 items-center justify-center tablet:h-72 tablet:w-72">
+          <ChevronRightIcon />
+          <span className="tracking-wider">more</span>
+        </a>
+      </Link>
+    </CardContainer>
+  );
+};
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props }) => {
+  return (
+    <CardContainer {...props}>
       <motion.div
         className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 tablet:w-72 tablet:h-72"
         layoutId={`card-${index}`}
@@ -38,8 +61,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props 
           </motion.div>
         </motion.div>
       </motion.div>
-    </motion.li>
+    </CardContainer>
   );
 };
 
-export default ProjectCard;
+export { ProjectCard, EmptyCard };

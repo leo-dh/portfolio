@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import ROUTES from "@utils/routes";
@@ -59,11 +59,14 @@ const listVariants: Variants = {
   },
 };
 
-const MobileNavigation = (): JSX.Element => {
+const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = (): void => {
     setMenuOpen(!isMenuOpen);
   };
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -112,7 +115,13 @@ const MobileNavigation = (): JSX.Element => {
                         <div className="bg-jungle-green-700 p-2 text-white">
                           <ContactIcon />
                         </div>
-                        <span className="mx-3 text-shark-700">{title}</span>
+                        <span
+                          className={`mx-3
+                      ${pathname === href ? "text-shark-500" : "text-jungle-green-900"}
+                        `}
+                        >
+                          {title}
+                        </span>
                       </a>
                     </Link>
                   </motion.li>
@@ -120,7 +129,9 @@ const MobileNavigation = (): JSX.Element => {
                   <motion.li
                     key={href}
                     variants={listItemVariants}
-                    className="py-2 uppercase font-bold text-shark-700"
+                    className={`py-2 uppercase font-bold ${
+                      pathname === href ? "text-shark-500" : "text-jungle-green-900"
+                    }`}
                   >
                     <Link href={href}>{title}</Link>
                   </motion.li>

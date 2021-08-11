@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import ROUTES from "@utils/routes";
@@ -54,11 +54,15 @@ const listVariants: Variants = {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 };
-const TabletNavigation = (): JSX.Element => {
+const TabletNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = (): void => {
     setMenuOpen(!isMenuOpen);
   };
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   return (
     <>
       <motion.button
@@ -106,7 +110,13 @@ const TabletNavigation = (): JSX.Element => {
                         <div className="bg-jungle-green-700 p-3 text-white">
                           <ContactIcon />
                         </div>
-                        <span className="mx-3 text-shark-700 text-right">{title}</span>
+                        <span
+                          className={`mx-3 text-right text-xl
+                      ${pathname === href ? "text-shark-500" : "text-jungle-green-900"}
+                        `}
+                        >
+                          {title}
+                        </span>
                       </a>
                     </Link>
                   </motion.li>
@@ -114,7 +124,9 @@ const TabletNavigation = (): JSX.Element => {
                   <motion.li
                     key={href}
                     variants={listItemVariants}
-                    className="py-2 uppercase font-bold text-shark-700"
+                    className={`py-2 uppercase font-bold
+                      ${pathname === href ? "text-shark-500" : "text-jungle-green-900"}
+                    `}
                   >
                     <Link href={href}>{title}</Link>
                   </motion.li>

@@ -1,6 +1,6 @@
 ## TODO
 
-- [ ] CSS for active nav links
+- [x] CSS for active nav links
 - [ ] Adjust modal dimensions for tablet and desktop resolution
 
 ---

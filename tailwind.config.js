@@ -1,4 +1,17 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
+
+const createPlugin = (newUtilities, variants) => {
+  return plugin(({ addUtilities }) => {
+    addUtilities(newUtilities, variants);
+  });
+};
+
+const aspectRatioUtilities = {
+  ".aspect-ratio-1": {
+    "aspect-ratio": "1/1",
+  },
+};
 
 module.exports = {
   mode: "jit",
@@ -79,5 +92,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [createPlugin(aspectRatioUtilities, ["responsive"])],
 };

@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .textlink {
-  @apply relative cursor-pointer z-0;
+  @apply relative cursor-pointer z-0 font-bold;
 }
 
 .textlink::after {

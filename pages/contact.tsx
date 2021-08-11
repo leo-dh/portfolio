@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, ContactForm } from "../components";
 
-const Contact: React.FC = () => {
+const Contact = (): JSX.Element => {
   return (
     <Layout>
       <ContactForm />

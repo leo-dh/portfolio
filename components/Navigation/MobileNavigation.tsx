@@ -59,7 +59,7 @@ const listVariants: Variants = {
   },
 };
 
-const MobileNavigation: React.FC = () => {
+const MobileNavigation = (): JSX.Element => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = (): void => {
     setMenuOpen(!isMenuOpen);

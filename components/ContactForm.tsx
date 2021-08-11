@@ -1,7 +1,7 @@
 import React from "react";
 import { GitHubIcon, MailIcon } from ".";
 
-const ContactForm: React.FC = () => {
+const ContactForm = (): JSX.Element => {
   return (
     <>
       <h1 className="text-5xl font-black uppercase">Contact</h1>

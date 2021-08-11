@@ -15,7 +15,7 @@ const LINKS = [
   },
 ];
 
-const OtherSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) => {
+const OtherSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Element => {
   return (
     <section className={`flex flex-col py-12 px-8 tablet:px-16 ${className}`} {...props}>
       <h1 className="text-4xl font-black uppercase">Other</h1>

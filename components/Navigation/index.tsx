@@ -5,7 +5,7 @@ import DesktopNavigation from "./DesktopNavigation";
 
 import useWindowSize from "@/hooks/useWindowSize";
 
-const Navigation: React.FC = () => {
+const Navigation = (): JSX.Element => {
   const { innerWidth } = useWindowSize();
   if (innerWidth < 600) {
     return <MobileNavigation />;

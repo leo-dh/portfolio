@@ -1,10 +1,10 @@
 import React, { useState, HTMLProps, useEffect } from "react";
 import Link from "next/link";
-import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { ProjectCard, ProjectModal, ChevronRightIcon, EmptyCard } from ".";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { ProjectCard, ProjectModal, ChevronRightIcon } from ".";
 import { PROJECTS_DETAILS } from "../utils/PublicData";
 
-const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) => {
+const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
   useEffect(() => {
     document.body.style.overflow = selectedId !== null ? "hidden" : "";
@@ -34,7 +34,7 @@ const ProjectsSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props
               onClick={() => setSelectedId(index)}
             />
           ))}
-          <EmptyCard className="desktop:hidden" />
+          <ProjectCard.Empty className="desktop:hidden" />
         </ul>
       </AnimateSharedLayout>
     </section>

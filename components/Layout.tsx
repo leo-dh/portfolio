@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Navigation from "./Navigation";
 
-const Layout: React.FC = ({ children }) => {
+const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <div className="bg-jungle-green-500">
       <Head>

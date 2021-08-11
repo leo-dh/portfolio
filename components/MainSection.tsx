@@ -2,7 +2,7 @@ import React, { HTMLProps } from "react";
 import { HandWavingIcon } from "./Icons";
 import { GITHUB_PROFILE } from "../utils/PublicData";
 
-const MainSection: React.FC<HTMLProps<HTMLElement>> = ({ className, ...props }) => {
+const MainSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Element => {
   return (
     <section
       className={`min-h-screen flex justify-center flex-col px-4 tablet:px-16 py-12 ${className}`}

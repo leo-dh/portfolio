@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { SVGProps } from "react";
 
-const AnimatedMenuIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
+const AnimatedMenuIcon = (props: SVGProps<SVGSVGElement>): JSX.Element => {
   return (
     <svg
       fill="currentColor"

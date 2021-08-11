@@ -9,7 +9,7 @@ interface ProjectModalProps {
   index: number | null;
 }
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ callback, index }) => {
+const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
   const { tags, title } = PROJECTS_DETAILS[index ?? 0];
   return (
     <>

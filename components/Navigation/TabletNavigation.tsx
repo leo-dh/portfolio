@@ -54,7 +54,7 @@ const listVariants: Variants = {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 };
-const TabletNavigation: React.FC = () => {
+const TabletNavigation = (): JSX.Element => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = (): void => {
     setMenuOpen(!isMenuOpen);

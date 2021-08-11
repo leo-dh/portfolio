@@ -4,13 +4,7 @@ import { motion, HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
 import { ChevronRightIcon } from "./Icons";
 
-interface ProjectCardProps extends HTMLMotionProps<"li"> {
-  title: string;
-  tags: string[];
-  index: number;
-}
-
-const CardContainer: React.FC<HTMLMotionProps<"li">> = ({ children, className, ...props }) => {
+const CardContainer = ({ children, className, ...props }: HTMLMotionProps<"li">): JSX.Element => {
   return (
     <motion.li
       className={`flex-shrink-0 cursor-pointer ${className}`}
@@ -22,20 +16,13 @@ const CardContainer: React.FC<HTMLMotionProps<"li">> = ({ children, className, .
   );
 };
 
-const EmptyCard: React.FC<HTMLMotionProps<"li">> = ({ ...props }) => {
-  return (
-    <CardContainer {...props}>
-      <Link href="/projects">
-        <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 items-center justify-center tablet:h-72 tablet:w-72">
-          <ChevronRightIcon />
-          <span className="tracking-wider">more</span>
-        </a>
-      </Link>
-    </CardContainer>
-  );
-};
+interface ProjectCardProps extends HTMLMotionProps<"li"> {
+  title: string;
+  tags: string[];
+  index: number;
+}
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props }) => {
+const ProjectCard = ({ title, tags, index, ...props }: ProjectCardProps): JSX.Element => {
   return (
     <CardContainer {...props}>
       <motion.div
@@ -65,4 +52,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, tags, index, ...props 
   );
 };
 
-export { ProjectCard, EmptyCard };
+const EmptyCard = ({ ...props }: HTMLMotionProps<"li">): JSX.Element => {
+  return (
+    <CardContainer {...props}>
+      <Link href="/projects">
+        <a className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 items-center justify-center tablet:h-72 tablet:w-72">
+          <ChevronRightIcon />
+          <span className="tracking-wider">more</span>
+        </a>
+      </Link>
+    </CardContainer>
+  );
+};
+
+ProjectCard.Empty = EmptyCard;
+
+export { ProjectCard };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { ContactIcon } from "../Icons";
 
-const DesktopNavigation: React.FC = () => {
+const DesktopNavigation = (): JSX.Element => {
   return (
     <nav className="fixed w-[320px] bg-jungle-green-500 h-full">
       <ul className="flex flex-col items-end justify-center h-full px-8 space-y-2 text-2xl">

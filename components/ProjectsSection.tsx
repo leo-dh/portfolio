@@ -36,12 +36,12 @@ const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.E
         <h1 className="text-4xl font-black uppercase">Projects </h1>
         <Link href="/projects" passHref>
           <motion.a
-            className="font-light tracking-wider ml-4 hover:text-jungle-green-500 duration-300 ease-in-out"
+            className="font-light tracking-wider ml-4 hover:text-jungle-green-500 duration-300 ease-in-out text-gray-500 desktop:text-lg desktop:font-normal "
             whileHover="hover"
           >
             more
-            <motion.div variants={svgVariants} className="inline-block">
-              <ChevronRightIcon className="h-3 w-3 inline" />
+            <motion.div variants={svgVariants} className="inline-block desktop:ml-1">
+              <ChevronRightIcon className="h-3 w-3 inline desktop:stroke-4" />
             </motion.div>
           </motion.a>
         </Link>

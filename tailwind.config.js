@@ -68,6 +68,10 @@ module.exports = {
       spacing: {
         "desktop-nav": "360px",
       },
+      strokeWidth: {
+        3: "3",
+        4: "4",
+      },
       keyframes: {
         "fade-in": {
           "0%": {

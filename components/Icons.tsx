@@ -99,8 +99,15 @@ export const MenuIcon = (props: ReactSVGProps): JSX.Element => {
 
 export const ChevronRightIcon = (props: ReactSVGProps): JSX.Element => {
   return (
-    <Icon className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+    <Icon
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="2"
+      {...props}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
     </Icon>
   );
 };

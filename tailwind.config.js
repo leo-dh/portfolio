@@ -20,7 +20,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Roboto", ...defaultTheme.fontFamily.sans],
+        sans: ["Jost", ...defaultTheme.fontFamily.sans],
+        futura: ["Futura Now Var", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         shark: {

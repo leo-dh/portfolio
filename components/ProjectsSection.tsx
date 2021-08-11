@@ -33,10 +33,10 @@ const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.E
   return (
     <section className={`flex flex-col py-12 ${className}`} {...props}>
       <div className="flex items-end ml-8 tablet:ml-16">
-        <h1 className="text-4xl font-black uppercase">Projects </h1>
+        <h1 className="text-3xl font-bold uppercase font-futura tracking-wider">Projects </h1>
         <Link href="/projects" passHref>
           <motion.a
-            className="font-light tracking-wider ml-4 hover:text-jungle-green-500 duration-300 ease-in-out text-gray-500 desktop:text-lg desktop:font-normal "
+            className="font-normal tracking-wider ml-4 hover:text-jungle-green-500 duration-300 ease-in-out text-gray-500 desktop:text-lg !leading-none"
             whileHover="hover"
           >
             more

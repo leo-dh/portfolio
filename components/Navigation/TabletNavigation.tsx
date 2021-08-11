@@ -7,7 +7,7 @@ import AnimatedMenuIcon from "./AnimatedMenuIcon";
 
 const navVariants: Variants = {
   open: {
-    width: "300px",
+    width: "320px",
     height: "100%",
     borderTopRightRadius: "0.5rem",
     transition: {
@@ -92,7 +92,7 @@ const TabletNavigation = (): JSX.Element => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.ul
-              className="flex flex-col justify-center items-end w-screen py-4 space-y-2 text-2xl px-8"
+              className="flex flex-col justify-center items-end w-screen py-4 space-y-2 text-2xl px-8 tracking-wider"
               variants={listVariants}
               initial="close"
               animate="open"
@@ -103,7 +103,7 @@ const TabletNavigation = (): JSX.Element => {
                   <motion.li key={href} variants={listItemVariants}>
                     <Link href={href}>
                       <a className="flex uppercase font-bold bg-jungle-green-200 rounded-md overflow-hidden items-center mt-4">
-                        <div className="bg-jungle-green-600 p-2 text-white">
+                        <div className="bg-jungle-green-700 p-3 text-white">
                           <ContactIcon />
                         </div>
                         <span className="mx-3 text-shark-700 text-right">{title}</span>

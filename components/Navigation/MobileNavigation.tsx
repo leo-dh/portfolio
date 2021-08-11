@@ -98,7 +98,7 @@ const MobileNavigation = (): JSX.Element => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.ul
-              className="flex flex-col justify-center items-center w-screen py-4 h-96 space-y-2"
+              className="flex flex-col justify-center items-center w-screen py-4 h-96 space-y-2 tracking-wider"
               variants={listVariants}
               initial="close"
               animate="open"
@@ -109,7 +109,7 @@ const MobileNavigation = (): JSX.Element => {
                   <motion.li key={href} variants={listItemVariants}>
                     <Link href={href}>
                       <a className="flex uppercase font-bold bg-jungle-green-200 rounded-md overflow-hidden items-center mt-4">
-                        <div className="bg-jungle-green-600 p-2 text-white">
+                        <div className="bg-jungle-green-700 p-2 text-white">
                           <ContactIcon />
                         </div>
                         <span className="mx-3 text-shark-700">{title}</span>

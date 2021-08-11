@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
-import ROUTES from "@/utils/routes";
-import { ContactIcon } from "@/components/Icons";
+import ROUTES from "@utils/routes";
+import { ContactIcon } from "../Icons";
 import AnimatedMenuIcon from "./AnimatedMenuIcon";
 
 const navVariants: Variants = {

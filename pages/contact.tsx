@@ -1,12 +1,7 @@
-import React from "react";
-import { Layout, ContactForm } from "../components";
+import { ContactForm } from "@components";
 
 const Contact = (): JSX.Element => {
-  return (
-    <Layout>
-      <ContactForm />
-    </Layout>
-  );
+  return <ContactForm />;
 };
 
 export default Contact;

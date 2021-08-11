@@ -1,5 +1,4 @@
-import React from "react";
-import { GitHubIcon, MailIcon } from ".";
+import { GitHubIcon, MailIcon } from "./Icons";
 
 const ContactForm = (): JSX.Element => {
   return (

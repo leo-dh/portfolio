@@ -1,6 +1,5 @@
-import ROUTES from "@/utils/routes";
+import ROUTES from "@utils/routes";
 import Link from "next/link";
-import React from "react";
 import { ContactIcon } from "../Icons";
 
 const DesktopNavigation = (): JSX.Element => {

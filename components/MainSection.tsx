@@ -1,6 +1,6 @@
-import React, { HTMLProps } from "react";
+import { HTMLProps } from "react";
 import { HandWavingIcon } from "./Icons";
-import { GITHUB_PROFILE } from "../utils/PublicData";
+import { GITHUB_PROFILE } from "@utils/PublicData";
 
 const MainSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Element => {
   return (

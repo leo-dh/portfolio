@@ -1,8 +1,7 @@
-import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { CrossIcon } from "./Icons";
-import { PROJECTS_DETAILS } from "../utils/PublicData";
+import { PROJECTS_DETAILS } from "@utils/PublicData";
 
 interface ProjectModalProps {
   callback: () => void;

@@ -46,6 +46,8 @@ module.exports = {
           },
         ],
         "prettier/prettier": ["error", {}, { usePrettierrc: true }],
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
       },
     },
   ],

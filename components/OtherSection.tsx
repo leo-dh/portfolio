@@ -1,4 +1,4 @@
-import React, { HTMLProps } from "react";
+import { HTMLProps } from "react";
 import Link from "next/link";
 import { ContactIcon, AboutIcon } from "./Icons";
 

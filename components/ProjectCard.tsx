@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { motion, HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
@@ -67,4 +66,4 @@ const EmptyCard = ({ ...props }: HTMLMotionProps<"li">): JSX.Element => {
 
 ProjectCard.Empty = EmptyCard;
 
-export { ProjectCard };
+export default ProjectCard;

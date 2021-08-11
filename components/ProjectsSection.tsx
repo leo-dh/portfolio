@@ -1,8 +1,10 @@
-import React, { useState, HTMLProps, useEffect } from "react";
+import { useState, HTMLProps, useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
-import { ProjectCard, ProjectModal, ChevronRightIcon } from ".";
-import { PROJECTS_DETAILS } from "../utils/PublicData";
+import ProjectCard from "./ProjectCard";
+import ProjectModal from "./ProjectModal";
+import { ChevronRightIcon } from "./Icons";
+import { PROJECTS_DETAILS } from "@utils/PublicData";
 
 const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);

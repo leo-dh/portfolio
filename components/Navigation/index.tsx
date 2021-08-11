@@ -1,9 +1,8 @@
-import React from "react";
 import MobileNavigation from "./MobileNavigation";
 import TabletNavigation from "./TabletNavigation";
 import DesktopNavigation from "./DesktopNavigation";
 
-import useWindowSize from "@/hooks/useWindowSize";
+import useWindowSize from "@hooks/useWindowSize";
 
 const Navigation = (): JSX.Element => {
   const { innerWidth } = useWindowSize();

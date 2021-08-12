@@ -25,6 +25,7 @@ module.exports = {
         "plugin:react-hooks/recommended", // React hooks rules
         // TODO Deal with accessibility issues at the end
         // "plugin:jsx-a11y/recommended", // Accessibility rules
+        "plugin:@next/next/recommended",
         "plugin:prettier/recommended",
       ],
       rules: {

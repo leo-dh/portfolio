@@ -1,72 +1,63 @@
 import { GitHubIcon, MailIcon } from "./Icons";
 
+const LINKS = [
+  { Icon: GitHubIcon, href: "https://github.com/leo-dh", label: "GitHub" },
+  { Icon: MailIcon, href: "mailto:me@leodh.dev", label: "Email" },
+];
+
 const ContactForm = (): JSX.Element => {
   return (
-    <>
-      <h1 className="text-5xl font-black uppercase">Contact</h1>
-      <div className="flex flex-col h-full justify-center flex-grow mt-12">
-        <div className="px-8 rounded flex flex-col">
-          <p className="text-sm font-light italic border-l-4 border-gray-400 pl-2">
-            Hey there, thanks for stopping by! If you wish to get in touch, feel free to leave me a
-            message below. :)
-          </p>
-          <div className="flex flex-col mt-8">
-            <label htmlFor="EmailInput" className="text-sm font-thin">
-              Email
-            </label>
-            <input
-              type="text"
-              id="EmailInput"
-              className="rounded py-1 px-2 bg-shark-400 outline-none mt-1"
-            />
-          </div>
-          <div className="flex flex-col mt-4">
-            <label htmlFor="MessageInput" className="text-sm font-thin">
-              Message
-            </label>
-            <textarea
-              name=""
-              id="MessageInput"
-              className="rounded py-1 px-2 bg-shark-400 outline-none mt-1"
-              rows={4}
-            ></textarea>
-          </div>
-          <button className="rounded font-bold bg-jungle-green-500 px-3 py-2 mt-4 text-shark-500">
-            Submit
-          </button>
-          <span className="text-xs text-gray-500 mt-3 ">
-            I will try to respond within 3 working days. If the matter is urgent do consider sending
-            me a direct email.
-          </span>
+    <div className="flex flex-col h-full justify-center mt-8">
+      <div className="rounded flex flex-col max-w-screen-md">
+        <p className="text-base font-light italic border-l-4 border-gray-400 pl-2">
+          Hey there, thanks for stopping by! If you wish to get in touch, feel free to leave me a
+          message below.
+        </p>
+        <div className="flex flex-col mt-8">
+          <label htmlFor="EmailInput" className="text-sm tablet:text-base">
+            Email
+          </label>
+          <input
+            type="text"
+            id="EmailInput"
+            className="rounded p-2 bg-shark-400 outline-none mt-1"
+          />
         </div>
-        <div className="flex px-8 justify-around mt-8">
-          <div className="flex items-center flex-1 justify-center">
-            <a href="https://github.com/leo-dh" target="_blank" rel="noreferrer">
-              <div className="p-2 rounded-full w-min bg-gray-100">
-                <GitHubIcon width="32" height="32" className="text-gray-700" />
-              </div>
-            </a>
-            <span className="ml-2">
-              <a href="https://github.com/leo-dh" target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            </span>
-          </div>
-          <div className="flex items-center flex-1 justify-center">
-            <a href="mailto:leo.ding.hao.2014@gmail.com" target="_blank" rel="noreferrer">
-              <div className="p-2 rounded-full w-min bg-gray-100">
-                <MailIcon width="32" height="32" className="text-gray-700" />
-              </div>
-            </a>
-            <span className="ml-2">
-              <a href="mailto:leo.ding.hao.2014@gmail.com" target="_blank" rel="noreferrer">
-                Email
-              </a>
-            </span>
-          </div>
+        <div className="flex flex-col mt-4">
+          <label htmlFor="MessageInput" className="text-sm tablet:text-base">
+            Message
+          </label>
+          <textarea
+            name=""
+            id="MessageInput"
+            className="rounded p-2 bg-shark-400 outline-none mt-1 h-28 tablet:h-40"
+          ></textarea>
         </div>
+        <button className="rounded font-bold bg-jungle-green-500 px-3 py-2 mt-4 text-shark-500 duration-300 ease-in-out hover:text-jungle-green-500 hover:bg-shark-400">
+          Submit
+        </button>
+        <span className="text-xs text-gray-500 mt-3 tablet:text-sm">
+          I will try to respond within 3 working days. If the matter is urgent do consider sending
+          me a direct email.
+        </span>
       </div>
-    </>
+      <div className="flex justify-start mt-12 space-x-2 tablet:mt-16 tablet:space-x-4 tablet:justify-start">
+        {LINKS.map(({ Icon, href, label }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            key={label}
+            className="flex items-center justify-center flex-col space-y-2 bg-shark-400 text-shark-200 rounded-lg py-6 w-20 tablet:w-24 hover:text-jungle-green-500 duration-300 ease-in-out"
+          >
+            <Icon className="w-6 h-6 tablet:w-8 tablet:h-8" />
+            <span className="text-sm rounded-lg uppercase font-semibold tracking-wide">
+              {label}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
   );
 };
 

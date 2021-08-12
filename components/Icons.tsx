@@ -68,14 +68,13 @@ export const GitHubIcon = (props: ReactSVGProps): JSX.Element => {
 export const MailIcon = (props: ReactSVGProps): JSX.Element => {
   return (
     <Icon
-      width="24"
-      height="24"
       viewBox="0 0 24 24"
       strokeWidth="2"
       stroke="currentColor"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="h-6 w-6"
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" /> <rect x="3" y="5" width="18" height="14" rx="2" />

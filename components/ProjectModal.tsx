@@ -50,7 +50,7 @@ const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
           >
             <Image src="/thumbnails/citypop.jpeg" layout="fill" objectFit="cover" />
             <motion.div
-              className="absolute -bottom-16 left-4 flex flex-col text-white desktop:-bottom-20 desktop:left-8"
+              className="absolute -bottom-16 left-4 flex flex-col text-white tablet:left-6 desktop:-bottom-20 desktop:left-8"
               layoutId={`content-${index}`}
             >
               <motion.p className="font-light desktop:text-xl">{title}</motion.p>
@@ -65,7 +65,7 @@ const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
               </motion.div>
             </motion.div>
           </motion.div>
-          <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col desktop:px-8 desktop:pb-16">
+          <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col tablet:px-6 desktop:px-8 desktop:pb-16">
             <div className="border-l-4 border-jungle-green-500 font-bold pl-4 text-lg mt-28 desktop:mt-36 desktop:text-xl">
               What is it?
             </div>

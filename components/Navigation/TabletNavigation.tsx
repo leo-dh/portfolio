@@ -96,7 +96,7 @@ const TabletNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.ul
-              className="flex flex-col justify-center items-end w-screen py-4 space-y-2 text-2xl px-8 tracking-wider"
+              className="flex flex-col justify-center items-end w-screen py-4 space-y-4 text-2xl px-8 tracking-wider"
               variants={listVariants}
               initial="close"
               animate="open"

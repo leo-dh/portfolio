@@ -14,4 +14,12 @@ export const PROJECTS_DETAILS = [
     title: "CityPop Landing Page",
     tags: ["TypeScript", "Vue", "SCSS"],
   },
+  {
+    title: "CityPop Landing Page",
+    tags: ["TypeScript", "Vue", "SCSS"],
+  },
+  {
+    title: "CityPop Landing Page",
+    tags: ["TypeScript", "Vue", "SCSS"],
+  },
 ];

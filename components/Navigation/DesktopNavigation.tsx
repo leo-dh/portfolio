@@ -7,7 +7,7 @@ const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
   return (
     <nav className="fixed w-desktop-nav h-full">
       <AnimateSharedLayout>
-        <ul className="flex flex-col items-end justify-center h-full px-8 space-y-2 text-2xl tracking-wider">
+        <ul className="flex flex-col items-end justify-center h-full px-8 space-y-4 text-2xl tracking-wider">
           {ROUTES.map(({ href, title }) => {
             return href === "/contact" ? (
               <li key={href}>

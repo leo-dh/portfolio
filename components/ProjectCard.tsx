@@ -19,6 +19,8 @@ interface ProjectCardProps extends HTMLMotionProps<"li"> {
   title: string;
   tags: string[];
   index: number;
+  corner?: boolean;
+  autoSize?: boolean;
 }
 
 const ProjectCard = ({
@@ -26,12 +28,17 @@ const ProjectCard = ({
   tags,
   index,
   className,
+  corner = false,
+  autoSize = false,
   ...props
 }: ProjectCardProps): JSX.Element => {
   return (
     <CardContainer className={`desktop:flex-1 ${className}`} {...props}>
       <motion.div
-        className="flex flex-col w-64 h-64 rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden border-2 border-gray-600 tablet:w-72 tablet:h-72 desktop:aspect-ratio-1 desktop:h-auto desktop:w-auto"
+        className={`flex flex-col ${
+          corner ? "rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl" : "rounded-lg"
+        } ${autoSize ? "w-auto h-auto" : "w-64 h-64 tablet:w-72 tablet:h-72"}
+        overflow-hidden border-2 border-gray-600 aspect-ratio-1 desktop:h-auto desktop:w-auto`}
         layoutId={`card-${index}`}
       >
         <motion.div className="h-full relative" layoutId={`image-${index}`}>

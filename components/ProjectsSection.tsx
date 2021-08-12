@@ -53,11 +53,12 @@ const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.E
           )}
         </AnimatePresence>
         <ul className="py-8 px-8 flex overflow-x-scroll hide-scroll-bar space-x-4 tablet:px-16">
-          {PROJECTS_DETAILS.map((project, index) => (
+          {PROJECTS_DETAILS.slice(0, 3).map((project, index) => (
             <ProjectCard
               index={index}
               key={index}
               {...project}
+              corner
               onClick={() => setSelectedId(index)}
             />
           ))}

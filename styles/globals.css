@@ -38,3 +38,12 @@ nav {
 ::selection {
   @apply bg-jungle-green-700;
 }
+
+.grid-cols {
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+}
+@screen desktop {
+  .grid-cols {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}

@@ -1,8 +1,10 @@
 import { GitHubIcon, MailIcon } from "./Icons";
+import LinkButton from "./LinkButton";
+import { EMAIL, GITHUB_PROFILE } from "@utils/PublicData";
 
 const LINKS = [
-  { Icon: GitHubIcon, href: "https://github.com/leo-dh", label: "GitHub" },
-  { Icon: MailIcon, href: "mailto:me@leodh.dev", label: "Email" },
+  { Icon: GitHubIcon, href: GITHUB_PROFILE, label: "GitHub" },
+  { Icon: MailIcon, href: `mailto:${EMAIL}`, label: "Email" },
 ];
 
 const ContactForm = (): JSX.Element => {
@@ -43,18 +45,14 @@ const ContactForm = (): JSX.Element => {
       </div>
       <div className="flex justify-start mt-12 space-x-2 tablet:mt-16 tablet:space-x-4 tablet:justify-start">
         {LINKS.map(({ Icon, href, label }) => (
-          <a
+          <LinkButton
+            label={label}
+            icon={<Icon className="w-6 h-6 tablet:w-8 tablet:h-8" />}
             href={href}
             target="_blank"
             rel="noreferrer"
             key={label}
-            className="flex items-center justify-center flex-col space-y-2 bg-shark-400 text-shark-200 rounded-lg py-6 w-20 tablet:w-24 hover:text-jungle-green-500 duration-300 ease-in-out"
-          >
-            <Icon className="w-6 h-6 tablet:w-8 tablet:h-8" />
-            <span className="text-sm rounded-lg uppercase font-semibold tracking-wide">
-              {label}
-            </span>
-          </a>
+          />
         ))}
       </div>
     </div>

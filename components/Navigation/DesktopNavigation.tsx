@@ -11,7 +11,7 @@ const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
           {ROUTES.map(({ href, title }) => {
             return href === "/contact" ? (
               <li key={href}>
-                <Link href={href}>
+                <Link href={href} scroll={false}>
                   <a className="flex uppercase font-semibold bg-jungle-green-200 rounded-md overflow-hidden items-center mt-4">
                     <div className="bg-jungle-green-700 p-4 text-white">
                       <ContactIcon />
@@ -33,7 +33,9 @@ const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                   pathname === href ? "text-shark-500" : "text-jungle-green-900"
                 }`}
               >
-                <Link href={href}>{title}</Link>
+                <Link href={href} scroll={false}>
+                  {title}
+                </Link>
 
                 {pathname === href && (
                   <motion.div

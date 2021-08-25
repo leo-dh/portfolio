@@ -1,7 +1,8 @@
 ## TODO
 
 - [x] CSS for active nav links
-- [ ] Adjust modal dimensions for tablet and desktop resolution
+- [x] Adjust modal dimensions for tablet and desktop resolution
+- [ ] Use `next-mdx-remote` for content generation as opposed to putting the details in `.ts` files.
 
 ---
 

@@ -18,6 +18,7 @@ const LINKS = [
 ];
 
 const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
+  // #TODO add custom scrollbar for desktop viewport
   const { tags, title } = PROJECTS_DETAILS[index ?? 0];
   return (
     <>
@@ -29,9 +30,9 @@ const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
         exit={{ opacity: 0, transition: { duration: 0.15 } }}
         transition={{ duration: 0.2, delay: 0.15 }}
       ></motion.div>
-      <div className="fixed w-[90vw] h-[80vh] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-[60] tablet:w-[560px] tablet:h-auto desktop:w-[960px]">
+      <div className="fixed w-[90vw] max-h-[80vh] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-[60] tablet:w-[560px] tablet:h-auto desktop:w-[960px] desktop:rounded-lg">
         <motion.div
-          className="flex flex-col overflow-y-scroll h-full rounded-lg desktop:rounded-xl max-h-[80vh]"
+          className="flex flex-col overflow-y-scroll h-full rounded-lg desktop:rounded-xl max-h-[80vh] desktop:hide-scrollbar"
           layoutId={`card-${index}`}
         >
           <motion.div

@@ -52,7 +52,7 @@ const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.E
             <ProjectModal index={selectedId} callback={() => setSelectedId(null)} />
           )}
         </AnimatePresence>
-        <ul className="py-8 px-8 flex overflow-x-scroll hide-scroll-bar space-x-4 tablet:px-16">
+        <ul className="py-8 px-8 flex overflow-x-scroll hide-scrollbar space-x-4 tablet:px-16">
           {PROJECTS_DETAILS.slice(0, 3).map((project, index) => (
             <ProjectCard
               index={index}

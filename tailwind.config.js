@@ -13,6 +13,16 @@ const aspectRatioUtilities = {
   },
 };
 
+const hideScrollbarUtilities = {
+  ".hide-scrollbar": {
+    "scrollbar-width": "none",
+    "-ms-overflow-style": "none",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+  },
+};
+
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
@@ -100,5 +110,8 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [createPlugin(aspectRatioUtilities, ["responsive"])],
+  plugins: [
+    createPlugin(aspectRatioUtilities, ["responsive"]),
+    createPlugin(hideScrollbarUtilities, ["responsive"]),
+  ],
 };

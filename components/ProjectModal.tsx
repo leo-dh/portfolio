@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useElementScroll, useTransform, useDragControls } from "framer-motion";
+import { motion } from "framer-motion";
 import { CrossIcon, GitHubIcon } from "./Icons";
 import LinkButton from "./LinkButton";
 import { GITHUB_PROFILE, PROJECTS_DETAILS } from "@utils/PublicData";
+import useCustomScrollbar from "@hooks/useCustomScrollbar";
 
 interface ProjectModalProps {
   callback: () => void;
@@ -21,23 +22,7 @@ const LINKS = [
 const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
   // #TODO add custom scrollbar for desktop viewport
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const scrollbarTrackRef = useRef<HTMLDivElement | null>(null);
-  const [showScrollbar, setShowScrollbar] = useState(false);
-  const [scrollbarHeight, setScrollbarHeight] = useState(0);
-  const { scrollYProgress } = useElementScroll(containerRef);
-  const scrollbarPosition = useTransform(scrollYProgress, (value) => {
-    const scrollbarTrackHeight = (containerRef.current?.offsetHeight || 0) - 8;
-    return value * (scrollbarTrackHeight - scrollbarHeight);
-  });
-  useEffect(() => {
-    const { scrollHeight, clientHeight, offsetHeight } = containerRef.current as HTMLDivElement;
-    const show = scrollHeight > clientHeight;
-    setShowScrollbar(show);
-    const scrollbarTrackHeight = offsetHeight - 8;
-    setScrollbarHeight(Math.floor((clientHeight / scrollHeight) * scrollbarTrackHeight));
-  }, []);
-
-  const dragControls = useDragControls();
+  const [showScrollbar, Scrollbar] = useCustomScrollbar(containerRef);
 
   const { tags, title } = PROJECTS_DETAILS[index ?? 0];
   return (
@@ -66,43 +51,7 @@ const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
           >
             <CrossIcon className="w-4 h-4 text-gray-800 desktop:w-6 desktop:h-6" />
           </motion.div>
-          {showScrollbar && (
-            <div
-              className="absolute top-1 right-0.5 bottom-1 w-1.5 rounded-full z-[60]"
-              id="scrollbar-track"
-              ref={scrollbarTrackRef}
-              onMouseDown={(e) => {
-                // Snap to cursor does not work for now
-                // To track issue https://github.com/framer/motion/issues/1216
-                dragControls.start(e, { snapToCursor: true });
-              }}
-            >
-              <motion.div
-                className={`left-0 right-0 rounded-full`}
-                id="scrollbar-thumb"
-                style={{
-                  y: scrollbarPosition,
-                  height: `${scrollbarHeight}px`,
-                  background: "rgba(0, 0, 0, 0.2)",
-                }}
-                drag="y"
-                dragConstraints={scrollbarTrackRef}
-                dragElastic={0}
-                dragControls={dragControls}
-                onDrag={(e, info) => {
-                  containerRef.current!.scrollTop += info.delta.y;
-                }}
-                whileTap={{ background: "rgba(0,0,0,0.4)" }}
-                whileHover={{ background: "rgba(0,0,0,0.3)" }}
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.3, delay: 0.2 },
-                }}
-                exit={{ opacity: 0, transition: { duration: 0.15 } }}
-              ></motion.div>
-            </div>
-          )}
+          {showScrollbar && <Scrollbar />}
           <motion.div
             className="h-56 tablet:h-64 desktop:h-96 relative flex-shrink-0"
             layoutId={`image-${index}`}

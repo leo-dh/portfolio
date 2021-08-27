@@ -6,7 +6,6 @@ const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
   return (
     <div className="bg-jungle-green-500">
       <Head>
-        <title>leodh</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />

@@ -3,6 +3,7 @@
 - [x] CSS for active nav links
 - [x] Adjust modal dimensions for tablet and desktop resolution
 - [ ] Use `next-mdx-remote` for content generation as opposed to putting the details in `.ts` files.
+- [ ] Set metadata for individual pages
 
 ---
 

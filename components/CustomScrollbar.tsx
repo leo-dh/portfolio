@@ -8,7 +8,7 @@ import {
   MouseEvent as ReactMouseEvent,
 } from "react";
 
-export default function useCustomScrollbar(
+export function useCustomScrollbar(
   containerRef: RefObject<HTMLElement>
 ): [boolean, () => JSX.Element] {
   const scrollbarTrackRef = useRef<HTMLDivElement | null>(null);

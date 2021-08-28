@@ -4,12 +4,7 @@ import { motion } from "framer-motion";
 import { CrossIcon, GitHubIcon } from "./Icons";
 import LinkButton from "./LinkButton";
 import { GITHUB_PROFILE, PROJECTS_DETAILS } from "@utils/PublicData";
-import useCustomScrollbar from "@hooks/useCustomScrollbar";
-
-interface ProjectModalProps {
-  callback: () => void;
-  index: number | null;
-}
+import { useCustomScrollbar } from "./CustomScrollbar";
 
 const LINKS = [
   {

@@ -46,9 +46,10 @@ const ProjectCard = ({
           <motion.div
             className="absolute bottom-4 left-4 flex flex-col text-white"
             layoutId={`content-${index}`}
+            layout
           >
             <motion.p className="font-light desktop:text-lg">{title}</motion.p>
-            <motion.div className="gap-x-2 flex flex-wrap items-center mt-2">
+            <motion.div className="gap-2 flex flex-wrap items-center mt-2 mr-4">
               {tags.map((tag, index) => {
                 return (
                   <div className="rounded-full bg-gray-300 inline-flex py-0.5 px-2" key={index}>

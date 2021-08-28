@@ -4,7 +4,7 @@ import { AnimatePresence, AnimateSharedLayout, motion, Variants } from "framer-m
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 import { ChevronRightIcon } from "./Icons";
-import { PROJECTS_DETAILS } from "@utils/PublicData";
+import { ProjectMDXData } from "@lib/mdx";
 
 const svgVariants: Variants = {
   rest: {
@@ -25,7 +25,11 @@ const svgVariants: Variants = {
   },
 };
 
-const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Element => {
+interface ProjectsSectionProps extends HTMLProps<HTMLElement> {
+  projects: ProjectMDXData[];
+}
+
+const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
   useEffect(() => {
     document.body.style.overflow = selectedId !== null ? "hidden" : "";
@@ -49,15 +53,20 @@ const ProjectsSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.E
       <AnimateSharedLayout type="crossfade">
         <AnimatePresence exitBeforeEnter>
           {selectedId !== null && (
-            <ProjectModal index={selectedId} callback={() => setSelectedId(null)} />
+            <ProjectModal
+              index={selectedId}
+              callback={() => setSelectedId(null)}
+              project={projects[selectedId ?? 0]}
+            />
           )}
         </AnimatePresence>
         <ul className="py-8 px-8 flex overflow-x-scroll hide-scrollbar space-x-4 tablet:px-16">
-          {PROJECTS_DETAILS.slice(0, 3).map((project, index) => (
+          {projects.map(({ data }, index) => (
             <ProjectCard
               index={index}
-              key={index}
-              {...project}
+              key={data.title}
+              {...data}
+              tags={data.tags}
               corner
               onClick={() => setSelectedId(index)}
             />

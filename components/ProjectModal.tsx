@@ -1,10 +1,12 @@
-import { useRef } from "react";
+import { HTMLProps, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { CrossIcon, GitHubIcon } from "./Icons";
 import LinkButton from "./LinkButton";
 import { GITHUB_PROFILE, PROJECTS_DETAILS } from "@utils/PublicData";
 import { useCustomScrollbar } from "./CustomScrollbar";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { ProjectMDXData } from "@lib/mdx";
 
 const LINKS = [
   {
@@ -14,12 +16,36 @@ const LINKS = [
   },
 ];
 
-const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
-  // #TODO add custom scrollbar for desktop viewport
+const MDXTitle = (props: HTMLProps<HTMLHeadingElement>): JSX.Element => (
+  <h2
+    className="mt-16 border-l-4 border-jungle-green-500 font-bold pl-4 text-lg desktop:text-xl"
+    {...props}
+  ></h2>
+);
+const MDXContent = (props: HTMLProps<HTMLDivElement>): JSX.Element => (
+  <p className="mt-4 text-sm desktop:text-base desktop:mt-6" {...props}></p>
+);
+const components = {
+  Title: MDXTitle,
+  Content: MDXContent,
+  LinkButton,
+  GitHubIcon,
+};
+
+interface ProjectModalProps {
+  callback: () => void;
+  index: number | null;
+  project: ProjectMDXData;
+}
+
+const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Element => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [showScrollbar, Scrollbar] = useCustomScrollbar(containerRef);
 
-  const { tags, title } = PROJECTS_DETAILS[index ?? 0];
+  const {
+    data: { image, tags, title },
+    content,
+  } = project;
   return (
     <>
       <motion.div
@@ -53,11 +79,12 @@ const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
           >
             <Image src="/thumbnails/citypop.jpeg" layout="fill" objectFit="cover" />
             <motion.div
-              className="absolute -bottom-16 left-4 flex flex-col text-white tablet:left-6 desktop:-bottom-20 desktop:left-8"
+              className="absolute -bottom-18 left-4 flex flex-col text-white tablet:left-6 desktop:-bottom-24 desktop:left-8"
               layoutId={`content-${index}`}
+              layout
             >
-              <motion.p className="font-light desktop:text-xl">{title}</motion.p>
-              <motion.div className="gap-x-2 flex flex-wrap items-center mt-2">
+              <motion.p className="font-light desktop:text-2xl">{title}</motion.p>
+              <motion.div className="gap-x-2 flex flex-wrap items-center mt-2 mr-4">
                 {tags.map((tag, index) => {
                   return (
                     <div className="rounded-full bg-gray-300 inline-flex py-0.5 px-2" key={index}>
@@ -68,29 +95,8 @@ const ProjectModal = ({ callback, index }: ProjectModalProps): JSX.Element => {
               </motion.div>
             </motion.div>
           </motion.div>
-          <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col tablet:px-6 desktop:px-8 desktop:pb-16">
-            <div className="border-l-4 border-jungle-green-500 font-bold pl-4 text-lg mt-28 desktop:mt-36 desktop:text-xl">
-              What is it?
-            </div>
-            <p className="mt-4 text-sm desktop:text-base desktop:mt-6">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem alias facilis culpa
-              commodi nam placeat error quidem ipsa officia recusandae!
-            </p>
-            <div className="mt-16 border-l-4 border-jungle-green-500 font-bold pl-4 text-lg desktop:text-xl">
-              Links
-            </div>
-            <div className="mt-4 text-sm desktop:text-base desktop:mt-6">
-              {LINKS.map(({ Icon, href, label }) => (
-                <LinkButton
-                  href={href}
-                  label={label}
-                  icon={<Icon className="w-6 h-6 tablet:w-8 tablet:h-8" />}
-                  key={label}
-                  target="_blank"
-                  rel="noreferrer"
-                />
-              ))}
-            </div>
+          <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col tablet:px-6 desktop:px-8 desktop:pb-16 pt-12 desktop:pt-20">
+            <MDXRemote {...content} components={components} />
           </motion.div>
         </motion.div>
       </div>

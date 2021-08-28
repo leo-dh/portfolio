@@ -77,6 +77,7 @@ module.exports = {
         widescreen: "1920px",
       },
       spacing: {
+        18: "4.5rem",
         "desktop-nav": "360px",
       },
       strokeWidth: {
@@ -113,5 +114,15 @@ module.exports = {
   plugins: [
     createPlugin(aspectRatioUtilities, ["responsive"]),
     createPlugin(hideScrollbarUtilities, ["responsive"]),
+    function ({ addBase }) {
+      addBase([
+        {
+          "@font-face": {
+            fontFamily: "Futura Now Var",
+            src: 'url("/fonts/FuturaNowVar.woff2") format("woff2")',
+          },
+        },
+      ]);
+    },
   ],
 };

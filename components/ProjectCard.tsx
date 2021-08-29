@@ -19,6 +19,7 @@ interface ProjectCardProps extends HTMLMotionProps<"li"> {
   title: string;
   tags: string[];
   index: number;
+  image: string;
   corner?: boolean;
   autoSize?: boolean;
 }
@@ -28,6 +29,7 @@ const ProjectCard = ({
   tags,
   index,
   className,
+  image,
   corner = false,
   autoSize = false,
   ...props
@@ -40,20 +42,17 @@ const ProjectCard = ({
         } ${autoSize ? "w-auto h-auto" : "w-64 h-64 tablet:w-72 tablet:h-72"}
         overflow-hidden border-2 border-gray-600 aspect-ratio-1 desktop:h-auto desktop:w-auto`}
         layoutId={`card-${index}`}
+        layout
       >
         <motion.div className="h-full relative" layoutId={`image-${index}`}>
-          <Image src="/thumbnails/citypop.jpeg" layout="fill" objectFit="cover" />
-          <motion.div
-            className="absolute bottom-4 left-4 flex flex-col text-white"
-            layoutId={`content-${index}`}
-            layout
-          >
-            <motion.p className="font-light desktop:text-lg">{title}</motion.p>
-            <motion.div className="gap-2 flex flex-wrap items-center mt-2 mr-4">
+          <Image src={image} layout="fill" objectFit="cover" />
+          <motion.div className="absolute flex flex-col text-white bg-gradient-to-t from-black/70 to-black/0 w-full py-4 px-4 bottom-0 left-0 justify-end h-full">
+            <motion.p className="font-bold desktop:text-lg">{title}</motion.p>
+            <motion.div className="gap-2 flex flex-wrap items-center mt-2">
               {tags.map((tag, index) => {
                 return (
                   <div className="rounded-full bg-gray-300 inline-flex py-0.5 px-2" key={index}>
-                    <p className="font-bold text-xs text-gray-700 desktop:text-sm">{tag}</p>
+                    <p className="font-bold text-xs text-shark-500 desktop:text-sm">{tag}</p>
                   </div>
                 );
               })}

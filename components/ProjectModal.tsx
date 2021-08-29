@@ -1,36 +1,11 @@
-import { HTMLProps, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CrossIcon, GitHubIcon } from "./Icons";
-import LinkButton from "./LinkButton";
-import { GITHUB_PROFILE, PROJECTS_DETAILS } from "@utils/PublicData";
+import { CrossIcon } from "./Icons";
 import { useCustomScrollbar } from "./CustomScrollbar";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { components } from "./MDXComponents";
+import { MDXRemote } from "next-mdx-remote";
 import { ProjectMDXData } from "@lib/mdx";
-
-const LINKS = [
-  {
-    href: GITHUB_PROFILE,
-    label: "GitHub",
-    Icon: GitHubIcon,
-  },
-];
-
-const MDXTitle = (props: HTMLProps<HTMLHeadingElement>): JSX.Element => (
-  <h2
-    className="mt-16 border-l-4 border-jungle-green-500 font-bold pl-4 text-lg desktop:text-xl"
-    {...props}
-  ></h2>
-);
-const MDXContent = (props: HTMLProps<HTMLDivElement>): JSX.Element => (
-  <p className="mt-4 text-sm desktop:text-base desktop:mt-6" {...props}></p>
-);
-const components = {
-  Title: MDXTitle,
-  Content: MDXContent,
-  LinkButton,
-  GitHubIcon,
-};
 
 interface ProjectModalProps {
   callback: () => void;
@@ -60,6 +35,7 @@ const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Elem
         <motion.div
           className="flex flex-col overflow-y-scroll h-full rounded-lg desktop:rounded-xl max-h-[80vh] hide-scrollbar"
           layoutId={`card-${index}`}
+          layout
           ref={containerRef}
         >
           <motion.div
@@ -77,25 +53,26 @@ const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Elem
             className="h-56 tablet:h-64 desktop:h-96 relative flex-shrink-0"
             layoutId={`image-${index}`}
           >
-            <Image src="/thumbnails/citypop.jpeg" layout="fill" objectFit="cover" />
-            <motion.div
-              className="absolute -bottom-18 left-4 flex flex-col text-white tablet:left-6 desktop:-bottom-24 desktop:left-8"
-              layoutId={`content-${index}`}
-              layout
-            >
-              <motion.p className="font-light desktop:text-2xl">{title}</motion.p>
-              <motion.div className="gap-x-2 flex flex-wrap items-center mt-2 mr-4">
+            <Image src={image} layout="fill" objectFit="cover" />
+          </motion.div>
+          <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col tablet:px-6 tablet:pb-12 desktop:px-8 desktop:pb-16">
+            <motion.div className="flex flex-col text-white my-10 mb-12 tablet:my-12 tablet:mb-14 desktop:my-14 desktop:mb-16">
+              <motion.p className="font-bold text-2xl tablet:text-3xl desktop:text-4xl ">
+                {title}
+              </motion.p>
+              <motion.div className="gap-2 flex flex-wrap items-center mt-4">
                 {tags.map((tag, index) => {
                   return (
-                    <div className="rounded-full bg-gray-300 inline-flex py-0.5 px-2" key={index}>
-                      <p className="font-bold text-xs text-gray-700 desktop:text-sm">{tag}</p>
+                    <div
+                      className="rounded-full bg-jungle-green-500 inline-flex py-0.5 px-2"
+                      key={index}
+                    >
+                      <p className="font-bold text-xs text-shark-500 desktop:text-sm">{tag}</p>
                     </div>
                   );
                 })}
               </motion.div>
             </motion.div>
-          </motion.div>
-          <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col tablet:px-6 desktop:px-8 desktop:pb-16 pt-12 desktop:pt-20">
             <MDXRemote {...content} components={components} />
           </motion.div>
         </motion.div>

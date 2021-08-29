@@ -1,4 +1,4 @@
-export { default as MainSection } from "./MainSection";
+export { default as HeroSection } from "./HeroSection";
 export { default as ProjectsSection } from "./ProjectsSection";
 export { default as OtherSection } from "./OtherSection";
 export { default as Layout } from "./Layout";

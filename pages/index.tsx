@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { OtherSection, MainSection, ProjectsSection } from "@components";
+import { OtherSection, HeroSection, ProjectsSection } from "@components";
 import { GetStaticProps } from "next";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 
@@ -22,7 +22,7 @@ const Home = ({ projects }: HomeProps): JSX.Element => {
       <Head>
         <title>Leo Ding Hao - Main</title>
       </Head>
-      <MainSection />
+      <HeroSection />
       <ProjectsSection projects={projects} />
       <OtherSection />
     </>

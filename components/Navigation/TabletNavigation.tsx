@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import ROUTES from "@utils/routes";
-import { ContactIcon } from "../Icons";
+import { ContactIcon, PaperAirplaneIcon } from "../Icons";
 import AnimatedMenuIcon from "./AnimatedMenuIcon";
 
 const navVariants: Variants = {
@@ -30,13 +30,13 @@ const navVariants: Variants = {
 };
 
 const listItemVariants: Variants = {
-  open: {
+  open: (active: boolean) => ({
     y: 0,
-    opacity: 1,
+    opacity: active ? 1 : 0.6,
     transition: {
       stiffness: 1000,
     },
-  },
+  }),
   close: {
     y: 40,
     opacity: 0,
@@ -104,15 +104,15 @@ const TabletNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
             >
               {ROUTES.map(({ href, title }) => {
                 return href === "/contact" ? (
-                  <motion.li key={href} variants={listItemVariants}>
-                    <Link href={href}>
-                      <a className="flex uppercase font-bold bg-jungle-green-200 rounded-md overflow-hidden items-center mt-4">
+                  <motion.li key={href} variants={listItemVariants} custom={true}>
+                    <Link href={href} scroll={false}>
+                      <a className="flex uppercase font-semibold bg-jungle-green-300 rounded-md overflow-hidden items-center mt-4">
                         <div className="bg-jungle-green-700 p-3 text-white">
                           <ContactIcon />
                         </div>
                         <span
-                          className={`mx-3 text-right text-xl
-                      ${pathname === href ? "text-shark-500" : "text-jungle-green-900"}
+                          className={`mx-3 text-right text-xl pb-1
+                      ${pathname === href ? "text-shark-500" : "text-jungle-green-800 opacity-60"}
                         `}
                         >
                           {title}
@@ -123,12 +123,29 @@ const TabletNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                 ) : (
                   <motion.li
                     key={href}
+                    custom={pathname === href}
                     variants={listItemVariants}
-                    className={`py-2 uppercase font-bold
-                      ${pathname === href ? "text-shark-500" : "text-jungle-green-900"}
+                    className={`py-2 uppercase duration-200 relative
+                      ${
+                        pathname === href
+                          ? "text-shark-500 font-extrabold"
+                          : "text-jungle-green-800 opacity-60 font-semibold"
+                      }
                     `}
                   >
-                    <Link href={href}>{title}</Link>
+                    <Link href={href} scroll={false}>
+                      {title}
+                    </Link>
+
+                    {pathname === href && (
+                      <motion.div
+                        className="absolute text-shark-500 top-1 bottom-0 -left-10 flex items-center"
+                        layoutId="indicator"
+                        initial={false}
+                      >
+                        <PaperAirplaneIcon className="rotate-90" />
+                      </motion.div>
+                    )}
                   </motion.li>
                 );
               })}

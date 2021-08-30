@@ -9,7 +9,7 @@ const About = (): JSX.Element => {
         <h1 className="text-4xl font-bold uppercase tracking-wider font-futura text-jungle-green-500">
           About Me
         </h1>
-        <p className="text-5xl font-bold mt-16">WORK IN PROGRESS... </p>
+        <p className="text-5xl font-bold mt-16 ">WORK IN PROGRESS ... </p>
       </section>
     </>
   );

@@ -66,7 +66,6 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
               index={index}
               key={data.title}
               {...data}
-              tags={data.tags}
               corner
               onClick={() => setSelectedId(index)}
             />

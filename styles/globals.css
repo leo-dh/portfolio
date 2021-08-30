@@ -32,3 +32,11 @@ nav {
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
 }
+
+.font-semibold-to-extrabold {
+  font-variation-settings: "wght" 600;
+  transition-property: font-variation-settings;
+}
+.font-semibold-to-extrabold:hover {
+  font-variation-settings: "wght" 800;
+}

@@ -24,7 +24,7 @@ const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Elem
   return (
     <>
       <motion.div
-        className="fixed z-50 top-0 bottom-0 left-0 right-0 bg-black/60 cursor-pointer"
+        className="fixed z-50 top-0 bottom-0 left-0 right-0 bg-black/60 cursor-pointer backdrop-blur-sm"
         onClick={callback}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

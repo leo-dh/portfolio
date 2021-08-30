@@ -115,14 +115,18 @@ module.exports = {
     createPlugin(aspectRatioUtilities, ["responsive"]),
     createPlugin(hideScrollbarUtilities, ["responsive"]),
     function ({ addBase }) {
-      addBase([
-        {
-          "@font-face": {
-            fontFamily: "Futura Now Var",
-            src: 'url("/fonts/FuturaNowVar.woff2") format("woff2")',
+      // Chrome not recognizing the different weights if fontWeight is not declared.
+      [500, 600, 700, 800, 900].forEach((weight) => {
+        addBase([
+          {
+            "@font-face": {
+              fontFamily: "Futura Now Var",
+              fontWeight: weight,
+              src: 'url("/fonts/FuturaNowVar.woff2") format("woff2")',
+            },
           },
-        },
-      ]);
+        ]);
+      });
     },
   ],
 };

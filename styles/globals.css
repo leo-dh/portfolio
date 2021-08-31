@@ -40,3 +40,10 @@ nav {
 .font-semibold-to-extrabold:hover {
   font-variation-settings: "wght" 800;
 }
+
+.aboutpage__bio p {
+  @apply w-full;
+}
+.aboutpage__bio a {
+  @apply font-semibold underline hover:text-jungle-green-500 duration-300;
+}

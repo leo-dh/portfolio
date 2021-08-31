@@ -326,6 +326,11 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.1.tgz#9daf5745156fd84b8e9889a2dc721f0c58e894aa"
   integrity sha512-CAEbWH7OIur6jEOzaai83jq3FmKmv4PmX1JYfs9IrYcGEVI/lyL1EXJGCj7eFVJ0bg5QR8LMxBlEtA+xKiLpFw==
 
+"@iconify/react@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-3.0.1.tgz#ce2cb3f4a2b6aab5f7af082c833d869b6fb43182"
+  integrity sha512-yUskSSR80JzRSWcqNsBAG9AN802XzZgHsex8mTOkMLYcPQC3fk1XwK17ulnY5vf692OafhGCAMccR8TWKFaGdw==
+
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.6.22.tgz#8a723157bf90e78f17dc0f27995398e6c731f1ba"

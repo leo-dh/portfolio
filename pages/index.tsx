@@ -16,7 +16,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 };
 
 const Home = ({ projects }: HomeProps): JSX.Element => {
-  console.log(projects);
   return (
     <>
       <Head>

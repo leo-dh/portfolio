@@ -22,7 +22,7 @@ const MainSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Eleme
     <motion.section
       className={`min-h-screen flex justify-center flex-col px-4 tablet:px-16 py-12 ${className}`}
       // {...props}
-      transition={{ staggerChildren: 0.15 }}
+      transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}
       initial="initial"
       animate="animate"
     >

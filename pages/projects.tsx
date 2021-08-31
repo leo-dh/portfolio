@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout, motion, Variants } from "framer-motion";
 import { ProjectCard, ProjectModal } from "@components";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 import { GetStaticProps } from "next";
@@ -17,6 +17,19 @@ export const getStaticProps: GetStaticProps<ProjectsProps> = async () => {
   };
 };
 
+const variants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 40,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeOut",
+    },
+  },
+};
 const Projects = ({ projects }: ProjectsProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
   useEffect(() => {
@@ -43,17 +56,23 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
               />
             )}
           </AnimatePresence>
-          <ul className="mt-8 gap-4 tablet:mt-12 grid grid-cols">
+          <motion.ul
+            className="mt-8 gap-4 tablet:mt-12 grid grid-cols"
+            transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}
+            initial="initial"
+            animate="animate"
+          >
             {projects.map(({ data }, index) => (
               <ProjectCard
                 index={index}
                 key={index}
                 {...data}
                 autoSize
+                variants={variants}
                 onClick={() => setSelectedId(index)}
               />
             ))}
-          </ul>
+          </motion.ul>
         </AnimateSharedLayout>
       </section>
     </>

@@ -53,7 +53,7 @@ const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Elem
             className="h-56 tablet:h-64 desktop:h-96 relative flex-shrink-0"
             layoutId={`image-${index}`}
           >
-            <Image src={image} layout="fill" objectFit="cover" />
+            <Image src={image} layout="fill" objectFit="cover" objectPosition="top" />
           </motion.div>
           <motion.div className="pb-8 bg-shark-500 px-4 text-white flex flex-col tablet:px-6 tablet:pb-12 desktop:px-8 desktop:pb-16">
             <motion.div className="flex flex-col text-white my-10 mb-12 tablet:my-12 tablet:mb-14 desktop:my-14 desktop:mb-16">

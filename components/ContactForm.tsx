@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { motion, AnimatePresence, AnimateSharedLayout, Variants } from "framer-motion";
 import { FormInputs } from "@shared/types";
-import { GitHubIcon, MailIcon } from "./Icons";
+import { ContactIcon, GitHubIcon } from "./Icons";
 import LinkButton from "./LinkButton";
 import { Links } from "@lib/mdx";
 
@@ -43,7 +43,7 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
   const LINKS = useMemo(
     () => [
       { Icon: GitHubIcon, href: links.github, label: "GitHub" },
-      { Icon: MailIcon, href: `mailto:${links.email}`, label: "Email" },
+      { Icon: ContactIcon, href: `mailto:${links.email}`, label: "Email" },
     ],
     [links]
   );

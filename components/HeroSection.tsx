@@ -1,7 +1,6 @@
-import { HTMLProps } from "react";
+import { HTMLMotionProps, motion, Variants } from "framer-motion";
 import { HandWavingIcon } from "./Icons";
-import { GITHUB_PROFILE } from "@utils/PublicData";
-import { motion, Variants } from "framer-motion";
+import { Links } from "@lib/mdx";
 
 const variants: Variants = {
   initial: {
@@ -17,11 +16,15 @@ const variants: Variants = {
   },
 };
 
-const MainSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Element => {
+interface HeroSectionProps extends HTMLMotionProps<"section"> {
+  links: Links;
+}
+
+const HeroSection = ({ links, className, ...props }: HeroSectionProps): JSX.Element => {
   return (
     <motion.section
+      {...props}
       className={`min-h-screen flex justify-center flex-col px-4 tablet:px-16 py-12 ${className}`}
-      // {...props}
       transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}
       initial="initial"
       animate="animate"
@@ -49,7 +52,7 @@ const MainSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Eleme
       >
         I am an aspiring software engineer who is interested in front-end development.
         <br className="hidden tablet:inline" /> All of my projects are listed on{" "}
-        <a className="textlink" href={GITHUB_PROFILE} target="_blank" rel="noreferrer">
+        <a className="textlink" href={links.github} target="_blank" rel="noreferrer">
           GitHub
         </a>{" "}
         if you are interested.
@@ -58,4 +61,4 @@ const MainSection = ({ className, ...props }: HTMLProps<HTMLElement>): JSX.Eleme
   );
 };
 
-export default MainSection;
+export default HeroSection;

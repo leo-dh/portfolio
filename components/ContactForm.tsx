@@ -1,15 +1,10 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { motion, AnimatePresence, AnimateSharedLayout, Variants } from "framer-motion";
-import { EMAIL, GITHUB_PROFILE } from "@utils/PublicData";
 import { FormInputs } from "@shared/types";
 import { GitHubIcon, MailIcon } from "./Icons";
 import LinkButton from "./LinkButton";
-
-const LINKS = [
-  { Icon: GitHubIcon, href: GITHUB_PROFILE, label: "GitHub" },
-  { Icon: MailIcon, href: `mailto:${EMAIL}`, label: "Email" },
-];
+import { Links } from "@lib/mdx";
 
 const fadeInVariant: Variants = {
   initial: { opacity: 0 },
@@ -33,13 +28,25 @@ enum FormState {
   ERROR,
 }
 
-const ContactForm = (): JSX.Element => {
+interface ContactFormProps {
+  links: Links;
+}
+
+const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputs>({ mode: "onSubmit", reValidateMode: "onBlur" });
   const [formState, setFormState] = useState(FormState.INITIAL);
+
+  const LINKS = useMemo(
+    () => [
+      { Icon: GitHubIcon, href: links.github, label: "GitHub" },
+      { Icon: MailIcon, href: `mailto:${links.email}`, label: "Email" },
+    ],
+    [links]
+  );
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setFormState(FormState.LOADING);

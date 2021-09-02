@@ -1,7 +1,21 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import { ContactForm } from "@components";
+import { getLinks, Links } from "@lib/mdx";
 
-const Contact = (): JSX.Element => {
+interface ContactProps {
+  links: Links;
+}
+
+export const getStaticProps: GetStaticProps<ContactProps> = async () => {
+  return {
+    props: {
+      links: await getLinks(),
+    },
+  };
+};
+
+const Contact = ({ links }: ContactProps): JSX.Element => {
   return (
     <>
       <Head>
@@ -11,7 +25,7 @@ const Contact = (): JSX.Element => {
         <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-jungle-green-500">
           Contact
         </h1>
-        <ContactForm />
+        <ContactForm links={links} />
       </section>
     </>
   );

@@ -1,27 +1,29 @@
 import Head from "next/head";
 import { OtherSection, HeroSection, ProjectsSection } from "@components";
 import { GetStaticProps } from "next";
-import { getAllProjects, ProjectMDXData } from "@lib/mdx";
+import { getAllProjects, getLinks, Links, ProjectMDXData } from "@lib/mdx";
 
 interface HomeProps {
   projects: ProjectMDXData[];
+  links: Links;
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   return {
     props: {
       projects: await getAllProjects(),
+      links: await getLinks(),
     },
   };
 };
 
-const Home = ({ projects }: HomeProps): JSX.Element => {
+const Home = ({ projects, links }: HomeProps): JSX.Element => {
   return (
     <>
       <Head>
         <title>Leo Ding Hao - Main</title>
       </Head>
-      <HeroSection />
+      <HeroSection links={links} />
       <ProjectsSection projects={projects} />
       <OtherSection />
     </>

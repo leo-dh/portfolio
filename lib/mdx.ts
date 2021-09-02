@@ -5,7 +5,9 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 const PROJECTS_DIRECTORY = path.join(process.cwd(), "data/projects");
-const ABOUT_ME_FILE = path.join(process.cwd(), "data/about/me.mdx");
+const ME_DIRECTORY = path.join(process.cwd(), "data/me");
+const ABOUT_FILE = path.join(ME_DIRECTORY, "about.mdx");
+const LINKS_FILE = path.join(ME_DIRECTORY, "links.mdx");
 
 export interface ProjectMDXData {
   data: {
@@ -62,10 +64,20 @@ export interface AboutProps {
 }
 
 export async function getAboutMe(): Promise<AboutProps> {
-  const fileContent = fs.readFileSync(ABOUT_ME_FILE, "utf-8");
+  const fileContent = fs.readFileSync(ABOUT_FILE, "utf-8");
   const { data, content } = matter(fileContent);
   return {
     info: await serialize(content),
     ...data,
   } as AboutProps;
+}
+
+export interface Links {
+  email: string;
+  github: string;
+}
+export async function getLinks(): Promise<Links> {
+  const fileContent = fs.readFileSync(LINKS_FILE, "utf-8");
+  const { data } = matter(fileContent);
+  return data as Links;
 }

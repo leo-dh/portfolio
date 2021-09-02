@@ -17,31 +17,93 @@ const fadeInVariant: Variants = {
   exit: { opacity: 0 },
 };
 
+const fadeInMotionProps = {
+  layout: true,
+  variants: fadeInVariant,
+  initial: "initial",
+  animate: "animate",
+  exit: "exit",
+  transition: { duration: 0.5 },
+};
+
+enum FormState {
+  INITIAL,
+  LOADING,
+  SUCCESS,
+  ERROR,
+}
+
 const ContactForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputs>({ mode: "onSubmit", reValidateMode: "onBlur" });
-  const [loading, setLoading] = useState(false);
+  const [formState, setFormState] = useState(FormState.INITIAL);
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    setLoading(true);
-    console.log(data);
-    // # TODO call api
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    setFormState(FormState.LOADING);
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (res.status === 200) {
+      setFormState(FormState.ERROR);
+    } else {
+      setFormState(FormState.ERROR);
+    }
     setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+      setFormState(FormState.INITIAL);
+    }, 4000);
+  };
+
+  const ButtonContent = (): JSX.Element => {
+    switch (formState) {
+      case FormState.INITIAL: {
+        return (
+          <motion.span {...fadeInMotionProps} key={FormState.INITIAL}>
+            Submit
+          </motion.span>
+        );
+      }
+      case FormState.LOADING: {
+        return (
+          <motion.div
+            className="rounded-full border-4 border-t-4 border-jungle-green-200 border-t-jungle-green-500 h-6 w-6 animate-spin mr-2"
+            key={FormState.LOADING}
+            {...fadeInMotionProps}
+          ></motion.div>
+        );
+      }
+      case FormState.SUCCESS: {
+        return (
+          <motion.span key={FormState.SUCCESS} {...fadeInMotionProps}>
+            You have left a message.
+          </motion.span>
+        );
+      }
+      case FormState.ERROR: {
+        return (
+          <motion.span key={FormState.ERROR} {...fadeInMotionProps}>
+            Huh... Try again in awhile.
+          </motion.span>
+        );
+      }
+    }
   };
 
   return (
     <div className="flex flex-col h-full justify-center mt-8">
       <AnimateSharedLayout>
         <motion.div className="flex flex-col max-w-screen-md" layout>
-          <p className="text-base font-light italic border-l-4 border-gray-400 pl-2">
+          <motion.p className="text-base font-light italic border-l-4 border-gray-400 pl-2" layout>
             Hey there, thanks for stopping by! If you wish to get in touch, feel free to leave me a
             message below.
-          </p>
+          </motion.p>
           <motion.form onSubmit={handleSubmit(onSubmit)} layout>
             <motion.div className="flex flex-col mt-8 " layout>
               <motion.label htmlFor="EmailInput" className="tablet:text-lg" layout>
@@ -65,15 +127,7 @@ const ContactForm = (): JSX.Element => {
               />
               <AnimatePresence>
                 {errors.email && (
-                  <motion.div
-                    layout
-                    variants={fadeInVariant}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                    className="text-sm text-gray-500"
-                  >
+                  <motion.div {...fadeInMotionProps} className="text-sm text-gray-500">
                     <span>{errors.email.message}</span>
                   </motion.div>
                 )}
@@ -96,15 +150,7 @@ const ContactForm = (): JSX.Element => {
               ></motion.textarea>
               <AnimatePresence>
                 {errors.message && (
-                  <motion.div
-                    layout
-                    variants={fadeInVariant}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                    className="text-sm text-gray-500"
-                  >
+                  <motion.div {...fadeInMotionProps} className="text-sm text-gray-500">
                     <span>{errors.message.message}</span>
                   </motion.div>
                 )}
@@ -114,21 +160,10 @@ const ContactForm = (): JSX.Element => {
               className="rounded font-bold bg-jungle-green-500 px-3 py-2 mt-4 text-shark-500 duration-300 ease-in-out hover:text-jungle-green-500 hover:bg-shark-400 flex w-full justify-center items-center disabled:bg-shark-300 disabled:text-jungle-green-500 disabled:cursor-not-allowed"
               type="submit"
               layout
-              disabled={loading}
+              disabled={formState === FormState.LOADING}
             >
-              Submit
-              <AnimatePresence>
-                {/* # TODO show success/failure message */}
-                {loading && (
-                  <motion.div
-                    className="rounded-full border-4 border-t-4 border-jungle-green-200 border-t-jungle-green-500 h-5 w-5 animate-spin ml-2"
-                    variants={fadeInVariant}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                  ></motion.div>
-                )}
+              <AnimatePresence exitBeforeEnter initial={false}>
+                <ButtonContent />
               </AnimatePresence>
             </motion.button>
           </motion.form>

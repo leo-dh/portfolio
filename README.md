@@ -1,9 +1,6 @@
 ## TODO
 
-- [ ] Use `next-mdx-remote` for content generation as opposed to putting the details in `.ts` files.
-- [ ] About me page
 - [ ] Set metadata for individual pages
-- [ ] API for contact page (telegram chatbot?)
 
 ---
 

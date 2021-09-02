@@ -180,10 +180,7 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
             me a direct email.
           </motion.span>
         </motion.div>
-        <motion.div
-          className="flex justify-start mt-12 space-x-2 tablet:mt-16 tablet:space-x-4 tablet:justify-start"
-          layout
-        >
+        <motion.div className="flex justify-start mt-12 gap-2 tablet:mt-16 tablet:gap-4" layout>
           {LINKS.map(({ Icon, href, label }) => (
             <LinkButton
               label={label}

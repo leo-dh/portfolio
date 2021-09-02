@@ -1,19 +1,15 @@
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { motion, AnimatePresence, AnimateSharedLayout, Variants } from "framer-motion";
+import { EMAIL, GITHUB_PROFILE } from "@utils/PublicData";
+import { FormInputs } from "@shared/types";
 import { GitHubIcon, MailIcon } from "./Icons";
 import LinkButton from "./LinkButton";
-import { EMAIL, GITHUB_PROFILE } from "@utils/PublicData";
-import { useState } from "react";
 
 const LINKS = [
   { Icon: GitHubIcon, href: GITHUB_PROFILE, label: "GitHub" },
   { Icon: MailIcon, href: `mailto:${EMAIL}`, label: "Email" },
 ];
-
-interface FormInputs {
-  email: string;
-  message: string;
-}
 
 const fadeInVariant: Variants = {
   initial: { opacity: 0 },

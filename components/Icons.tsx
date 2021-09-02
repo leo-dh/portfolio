@@ -132,3 +132,14 @@ export const PaperAirplaneIcon = (props: ReactSVGProps): JSX.Element => (
     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
   </Icon>
 );
+
+export const ExternalLinkIcon = (props: ReactSVGProps): JSX.Element => (
+  <Icon stroke="currentColor" fill="none" viewBox="0 0 24 24" className="h-6 w-6" {...props}>
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+    />
+  </Icon>
+);

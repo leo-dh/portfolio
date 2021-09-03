@@ -24,7 +24,7 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
         <div className="mt-12 space-y-20">
           <div>
             <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">Bio</h2>
-            <div className="mt-4 space-y-8 flex flex-col items-center aboutpage__bio">
+            <div className="mt-4 space-y-8 flex flex-col">
               <MDXRemote {...info} components={{ TextLink: MDXContentTextLink }} />
             </div>
           </div>

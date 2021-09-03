@@ -40,7 +40,3 @@ nav {
 .font-semibold-to-extrabold:hover {
   font-variation-settings: "wght" 800;
 }
-
-.aboutpage__bio p {
-  @apply w-full;
-}

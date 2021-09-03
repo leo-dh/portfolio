@@ -1,0 +1,61 @@
+---
+title: "Minify Images Web App"
+tags:
+  - Typescript
+  - Preact
+  - Web Worker
+  - WASM
+  - ExpressJS
+date: "2021-01-19"
+image: "/thumbnails/minifyimages.jpeg"
+---
+
+<Title>What is it?</Title>
+<Content>
+  <Text>
+    Simple web application to bulk compress images mainly inspired from{" "}
+    <TextLink href="https://github.com/GoogleChromeLabs/squoosh" target="_blank" rel="noreferrer">
+      Squoosh
+    </TextLink>
+    . Images can be compressed using either lossy or lossless compression. Users are given the option
+    to choose how the compression is done: either on their own browser or sending the images to a backend
+    server.
+  </Text>
+</Content>
+<Spacer />
+<Title>Technologies used</Title>
+<Content>
+  <Text>
+    A WebAssembly binary is used to enable the browser to compress images using either the MozJPEG
+    library or Libimagequant library from C. This is possible by using{" "}
+    <TextLink href="https://emscripten.org" target="_blank" rel="noreferrer">
+      emscripten
+    </TextLink>{" "}
+    to compile the C libraries down to WASM format. Web workers are also used to offload work from
+    the main thread, which enables the interface to stay responsive while the binary runs.
+    <br />
+    <br />
+    The frontend is a Preact application while the backend server uses the ExpressJS framework. The entire
+    stack is written in Typescript.
+  </Text>
+</Content>
+<Spacer />
+<Title>Links</Title>
+<Content>
+  <Links>
+    <LinkButton
+      href="https://github.com/leo-dh/minifyimages-webapp"
+      label="GitHub"
+      icon={<GitHubIcon />}
+      target="_blank"
+      rel="noreferrer"
+    />
+    <LinkButton
+      href="https://projects.leodh.dev/minifyimages"
+      label="Link"
+      icon={<ExternalLinkIcon />}
+      target="_blank"
+      rel="noreferrer"
+    />
+  </Links>
+</Content>

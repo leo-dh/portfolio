@@ -61,7 +61,7 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
           )}
         </AnimatePresence>
         <ul className="py-8 px-8 flex overflow-x-scroll hide-scrollbar space-x-4 tablet:px-16">
-          {projects.map(({ data }, index) => (
+          {projects.slice(0, 3).map(({ data }, index) => (
             <ProjectCard
               index={index}
               key={data.title}

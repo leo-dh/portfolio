@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import { Icon } from "@iconify/react";
 import Head from "next/head";
 import { MDXRemote } from "next-mdx-remote";
+import { MDXContentTextLink } from "@components/MDXComponents";
 
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
   return {
@@ -24,7 +25,7 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
           <div>
             <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">Bio</h2>
             <div className="mt-4 space-y-8 flex flex-col items-center aboutpage__bio">
-              <MDXRemote {...info} />
+              <MDXRemote {...info} components={{ TextLink: MDXContentTextLink }} />
             </div>
           </div>
           <div>

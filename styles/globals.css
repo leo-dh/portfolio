@@ -44,6 +44,3 @@ nav {
 .aboutpage__bio p {
   @apply w-full;
 }
-.aboutpage__bio a {
-  @apply font-semibold underline hover:text-jungle-green-500 duration-300;
-}

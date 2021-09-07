@@ -30,7 +30,7 @@ const HeroSection = ({ links, className, ...props }: HeroSectionProps): JSX.Elem
       animate="animate"
     >
       <motion.div className="flex items-center" variants={variants}>
-        <h1 className="font-bold text-5xl tablet:text-6xl desktop:text-7xl text-jungle-green-500">
+        <h1 className="font-bold text-5xl tablet:text-6xl desktop:text-7xl text-primary-500">
           Hey there
         </h1>
         <HandWavingIcon

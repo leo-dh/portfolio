@@ -80,7 +80,7 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
       case FormState.LOADING: {
         return (
           <motion.div
-            className="rounded-full border-4 border-t-4 border-jungle-green-200 border-t-jungle-green-500 h-6 w-6 animate-spin mr-2"
+            className="rounded-full border-4 border-t-4 border-primary-200 border-t-primary-500 h-6 w-6 animate-spin mr-2"
             key={FormState.LOADING}
             {...fadeInMotionProps}
           ></motion.div>
@@ -164,7 +164,7 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
               </AnimatePresence>
             </motion.div>
             <motion.button
-              className="rounded font-bold bg-jungle-green-500 px-3 py-2 mt-4 text-shark-500 duration-300 ease-in-out hover:text-jungle-green-500 hover:bg-shark-400 flex w-full justify-center items-center disabled:bg-shark-300 disabled:text-jungle-green-500 disabled:cursor-not-allowed"
+              className="rounded font-bold bg-primary-500 px-3 py-2 mt-4 text-shark-500 duration-300 ease-in-out hover:text-primary-500 hover:bg-shark-400 flex w-full justify-center items-center disabled:bg-shark-300 disabled:text-primary-500 disabled:cursor-not-allowed"
               type="submit"
               layout
               disabled={formState === FormState.LOADING}

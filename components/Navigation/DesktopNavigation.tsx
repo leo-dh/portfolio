@@ -17,8 +17,8 @@ const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                 }`}
               >
                 <Link href={href} scroll={false}>
-                  <a className="flex uppercase font-semibold bg-jungle-green-300 rounded-md overflow-hidden items-center mt-4">
-                    <div className="bg-jungle-green-700 p-4 text-white">
+                  <a className="flex uppercase font-semibold bg-primary-300 rounded-md overflow-hidden items-center mt-4">
+                    <div className="bg-primary-700 p-4 text-white">
                       <ContactIcon />
                     </div>
                     <span
@@ -26,7 +26,7 @@ const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                   ${
                     pathname === href
                       ? "text-shark-500 "
-                      : "text-jungle-green-800 opacity-60 group-hover:opacity-100"
+                      : "text-primary-800 opacity-60 group-hover:opacity-100"
                   }
                     `}
                     >
@@ -41,7 +41,7 @@ const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                 className={`py-2 uppercase relative duration-300 ${
                   pathname === href
                     ? "text-shark-500 font-extrabold"
-                    : "text-jungle-green-800 opacity-60 hover:opacity-100 font-semibold font-semibold-to-extrabold"
+                    : "text-primary-800 opacity-60 hover:opacity-100 font-semibold font-semibold-to-extrabold"
                 }`}
               >
                 <Link href={href} scroll={false}>

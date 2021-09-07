@@ -42,7 +42,7 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
         description="You can view a list of my past projects here! Links are also provided."
       />
       <section className="flex flex-col justify-center desktop:justify-start min-h-screen px-8 py-12 tablet:px-16 tablet:py-16">
-        <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-jungle-green-500">
+        <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-primary-500">
           Projects
         </h1>
 

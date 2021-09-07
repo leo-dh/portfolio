@@ -19,7 +19,7 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
         description="I enjoy creating simple scripts and tools to automate the simple things in life! My other interests and skills are also listed on the page. "
       />
       <section className="flex flex-col justify-center min-h-screen px-8 py-12 tablet:p-16 max-w-screen-lg">
-        <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-jungle-green-500">
+        <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-primary-500">
           About Me
         </h1>
         <div className="mt-12 space-y-20">
@@ -59,7 +59,7 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
             <ul className="mt-8 space-y-4">
               {timeline.map(({ start, end, description, institution }, index) => (
                 <li className="flex" key={index}>
-                  <div className="border-r-4 border-jungle-green-500 pr-4 flex flex-col justify-between text-sm">
+                  <div className="border-r-4 border-primary-500 pr-4 flex flex-col justify-between text-sm">
                     <p>{end}</p>
                     <p className="text-shark-200">{start}</p>
                   </div>

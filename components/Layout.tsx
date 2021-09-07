@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 
 const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
   return (
-    <div className="bg-jungle-green-500">
+    <div className="bg-primary-500">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         {/* <!-- Primary Meta Tags --> */}

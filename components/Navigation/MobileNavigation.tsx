@@ -71,7 +71,7 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
   return (
     <>
       <motion.button
-        className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-jungle-green-500`}
+        className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-primary-500`}
         onClick={toggleMenu}
         animate={isMenuOpen ? "open" : "close"}
       >
@@ -90,7 +90,7 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
         )}
       </AnimatePresence>
       <motion.nav
-        className={`fixed overflow-hidden flex bottom-0 right-0 z-20 bg-jungle-green-500 ${
+        className={`fixed overflow-hidden flex bottom-0 right-0 z-20 bg-primary-500 ${
           isMenuOpen ? "shadow-lg" : "shadow-md"
         }`}
         animate={isMenuOpen ? "open" : "close"}
@@ -111,13 +111,13 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                 return href === "/contact" ? (
                   <motion.li key={href} variants={listItemVariants} custom={true}>
                     <Link href={href} scroll={false}>
-                      <a className="flex uppercase font-semibold bg-jungle-green-300 rounded-md overflow-hidden items-center mt-4">
-                        <div className="bg-jungle-green-700 p-2 text-white">
+                      <a className="flex uppercase font-semibold bg-primary-300 rounded-md overflow-hidden items-center mt-4">
+                        <div className="bg-primary-700 p-2 text-white">
                           <ContactIcon />
                         </div>
                         <span
                           className={`mx-3 pb-1
-                      ${pathname === href ? "text-shark-500" : "text-jungle-green-800 opacity-60"}
+                      ${pathname === href ? "text-shark-500" : "text-primary-800 opacity-60"}
                         `}
                         >
                           {title}
@@ -133,7 +133,7 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                     className={`py-2 uppercase relative ${
                       pathname === href
                         ? "text-shark-500 font-extrabold"
-                        : "text-jungle-green-800 opacity-60 font-semibold"
+                        : "text-primary-800 opacity-60 font-semibold"
                     }`}
                   >
                     <Link href={href} scroll={false}>

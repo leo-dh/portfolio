@@ -4,7 +4,7 @@ import { ExternalLinkIcon, GitHubIcon } from "./Icons";
 
 export const MDXTitle = (props: HTMLProps<HTMLHeadingElement>): JSX.Element => (
   <h2
-    className="border-l-4 border-jungle-green-500 font-bold pl-4 text-lg tablet:text-xl"
+    className="border-l-4 border-primary-500 font-bold pl-4 text-lg tablet:text-xl"
     {...props}
   ></h2>
 );
@@ -16,7 +16,7 @@ export const MDXContentText = (props: HTMLProps<HTMLParagraphElement>): JSX.Elem
 );
 
 export const MDXContentTextLink = (props: HTMLProps<HTMLAnchorElement>): JSX.Element => (
-  <a {...props} className="font-semibold underline hover:text-jungle-green-500 duration-300"></a>
+  <a {...props} className="font-semibold underline hover:text-primary-500 duration-300"></a>
 );
 
 export const MDXLinksContainer = (props: HTMLProps<HTMLDivElement>): JSX.Element => (

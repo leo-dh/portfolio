@@ -6,7 +6,7 @@ interface LinkButtonProps extends HTMLProps<HTMLAnchorElement> {
 }
 const LinkButton = ({ label, icon, ...props }: LinkButtonProps): JSX.Element => (
   <a
-    className="flex items-center justify-center flex-col space-y-2 bg-shark-400 text-shark-200 rounded-lg py-6 w-20 tablet:w-24 hover:text-jungle-green-500 duration-300 ease-in-out hover:scale-[1.02]"
+    className="flex items-center justify-center flex-col space-y-2 bg-shark-400 text-shark-200 rounded-lg py-6 w-20 tablet:w-24 hover:text-primary-500 duration-300 ease-in-out hover:scale-[1.02]"
     {...props}
   >
     {icon}

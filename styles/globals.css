@@ -11,7 +11,7 @@ nav {
 }
 
 .textlink::after {
-  @apply absolute top-[60%] z-[-1] left-[-0.1em] right-[-0.1em] bottom-0 bg-jungle-green-700;
+  @apply absolute top-[60%] z-[-1] left-[-0.1em] right-[-0.1em] bottom-0 bg-primary-700;
   content: "";
   transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
 }
@@ -21,7 +21,7 @@ nav {
 }
 
 ::selection {
-  @apply bg-jungle-green-700;
+  @apply bg-primary-700;
 }
 
 .grid-cols {

@@ -64,7 +64,7 @@ const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Elem
                 {tags.map((tag, index) => {
                   return (
                     <div
-                      className="rounded-full bg-jungle-green-500 inline-flex py-0.5 px-2"
+                      className="rounded-full bg-primary-500 inline-flex py-0.5 px-2"
                       key={index}
                     >
                       <p className="font-bold text-xs text-shark-500 desktop:text-sm">{tag}</p>

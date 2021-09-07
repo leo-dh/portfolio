@@ -2,9 +2,11 @@ import { useState, HTMLProps, useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence, AnimateSharedLayout, motion, Variants } from "framer-motion";
 import ProjectCard from "./ProjectCard";
-import ProjectModal from "./ProjectModal";
 import { ChevronRightIcon } from "./Icons";
 import { ProjectMDXData } from "@lib/mdx";
+import dynamic from "next/dynamic";
+
+const ProjectModal = dynamic(() => import("./ProjectModal"));
 
 const svgVariants: Variants = {
   rest: {

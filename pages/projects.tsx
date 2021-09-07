@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, AnimateSharedLayout, motion, Variants } from "framer-motion";
-import { ProjectCard, ProjectModal, MetaTags } from "@components";
+import { ProjectCard, MetaTags } from "@components";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+
+const ProjectModal = dynamic(() => import("@components/ProjectModal"));
 
 interface ProjectsProps {
   projects: ProjectMDXData[];

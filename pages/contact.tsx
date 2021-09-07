@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import { ContactForm } from "@components";
+import { ContactForm, MetaTags } from "@components";
 import { getLinks, Links } from "@lib/mdx";
 
 interface ContactProps {
@@ -18,9 +17,10 @@ export const getStaticProps: GetStaticProps<ContactProps> = async () => {
 const Contact = ({ links }: ContactProps): JSX.Element => {
   return (
     <>
-      <Head>
-        <title>Leo Ding Hao - Contact</title>
-      </Head>
+      <MetaTags
+        title="Contact Me - Leo Ding Hao"
+        description="You can leave a message for me here if it is not urgent. Otherwise, you can also contact me via email as well."
+      />
       <section className="flex flex-col justify-center min-h-screen py-12 px-8 tablet:px-16 tablet:py-16">
         <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-jungle-green-500">
           Contact

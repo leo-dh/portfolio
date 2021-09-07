@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import Head from "next/head";
 import { AnimatePresence, AnimateSharedLayout, motion, Variants } from "framer-motion";
-import { ProjectCard, ProjectModal } from "@components";
+import { ProjectCard, ProjectModal, MetaTags } from "@components";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 import { GetStaticProps } from "next";
 
@@ -38,9 +37,10 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
 
   return (
     <>
-      <Head>
-        <title>Leo Ding Hao - Projects</title>
-      </Head>
+      <MetaTags
+        title="My Projects - Leo Ding Hao"
+        description="You can view a list of my past projects here! Links are also provided."
+      />
       <section className="flex flex-col justify-center desktop:justify-start min-h-screen px-8 py-12 tablet:px-16 tablet:py-16">
         <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-jungle-green-500">
           Projects

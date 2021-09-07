@@ -1,7 +1,7 @@
 import { getAboutMe, AboutProps } from "@lib/mdx";
+import { MetaTags } from "@components";
 import { GetStaticProps } from "next";
 import { Icon } from "@iconify/react";
-import Head from "next/head";
 import { MDXRemote } from "next-mdx-remote";
 import { MDXContentTextLink } from "@components/MDXComponents";
 
@@ -14,9 +14,10 @@ export const getStaticProps: GetStaticProps<AboutProps> = async () => {
 const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => {
   return (
     <>
-      <Head>
-        <title>Leo Ding Hao - About</title>
-      </Head>
+      <MetaTags
+        title="About Me - Leo Ding Hao"
+        description="I enjoy creating simple scripts and tools to automate the simple things in life! My other interests and skills are also listed on the page. "
+      />
       <section className="flex flex-col justify-center min-h-screen px-8 py-12 tablet:p-16 max-w-screen-lg">
         <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-jungle-green-500">
           About Me

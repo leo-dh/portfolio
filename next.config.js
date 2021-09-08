@@ -7,5 +7,14 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
  * @type {import('next').NextConfig}
  **/
 // @ts-ignore
-const nextConfig = {};
-module.exports = nextConfig;
+const nextConfig = {
+  webpack: (config, { dev }) => {
+    if (!dev)
+      config.module.rules.push({
+        include: [path.resolve(__dirname, "components/index.ts")],
+        sideEffects: false,
+      });
+    return config;
+  },
+};
+module.exports = withBundleAnalyzer(nextConfig);

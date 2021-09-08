@@ -6,7 +6,7 @@ import { ChevronRightIcon } from "./Icons";
 import { ProjectMDXData } from "@lib/mdx";
 import dynamic from "next/dynamic";
 
-const ProjectModal = dynamic(() => import("./ProjectModal"));
+const ProjectModal = dynamic(() => import("./ProjectModal"), { ssr: false });
 
 const svgVariants: Variants = {
   rest: {

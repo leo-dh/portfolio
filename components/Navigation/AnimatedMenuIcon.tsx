@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { SVGProps } from "react";
 
 const AnimatedMenuIcon = (props: SVGProps<SVGSVGElement>): JSX.Element => {
@@ -11,14 +11,14 @@ const AnimatedMenuIcon = (props: SVGProps<SVGSVGElement>): JSX.Element => {
       stroke="currentColor"
       {...props}
     >
-      <motion.path
+      <m.path
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
         variants={{ close: { d: "M4 6l16 0" }, open: { d: "M6 6l12 12" } }}
         // transition={{ duration: 0.3 }}
       />
-      <motion.path
+      <m.path
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
@@ -26,7 +26,7 @@ const AnimatedMenuIcon = (props: SVGProps<SVGSVGElement>): JSX.Element => {
         transition={{ duration: 0.1 }}
         d="M4 12h16"
       />
-      <motion.path
+      <m.path
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"

@@ -1,17 +1,17 @@
 import Image from "next/image";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { m, HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
 import { ChevronRightIcon } from "./Icons";
 
 const CardContainer = ({ children, className, ...props }: HTMLMotionProps<"li">): JSX.Element => {
   return (
-    <motion.li
+    <m.li
       className={`flex-shrink-0 cursor-pointer ${className}`}
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
       {...props}
     >
       {children}
-    </motion.li>
+    </m.li>
   );
 };
 
@@ -36,7 +36,7 @@ const ProjectCard = ({
 }: ProjectCardProps): JSX.Element => {
   return (
     <CardContainer className={`desktop:flex-1 ${className}`} {...props}>
-      <motion.div
+      <m.div
         className={`flex flex-col ${
           corner ? "rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl" : "rounded-lg"
         } ${autoSize ? "w-auto h-auto" : "w-64 h-64 tablet:w-72 tablet:h-72"}
@@ -44,11 +44,11 @@ const ProjectCard = ({
         layoutId={`card-${index}`}
         layout
       >
-        <motion.div className="h-full relative" layoutId={`image-${index}`}>
+        <m.div className="h-full relative" layoutId={`image-${index}`}>
           <Image src={image} layout="fill" objectFit="cover" />
-          <motion.div className="absolute flex flex-col text-white bg-gradient-to-t from-black/70 to-black/0 w-full py-4 px-4 bottom-0 left-0 justify-end h-full">
-            <motion.p className="font-bold desktop:text-lg">{title}</motion.p>
-            <motion.div className="gap-2 flex flex-wrap items-center mt-2">
+          <m.div className="absolute flex flex-col text-white bg-gradient-to-t from-black/70 to-black/0 w-full py-4 px-4 bottom-0 left-0 justify-end h-full">
+            <m.p className="font-bold desktop:text-lg">{title}</m.p>
+            <m.div className="gap-2 flex flex-wrap items-center mt-2">
               {tags.map((tag, index) => {
                 return (
                   <div className="rounded-full bg-gray-300 inline-flex py-0.5 px-2" key={index}>
@@ -56,10 +56,10 @@ const ProjectCard = ({
                   </div>
                 );
               })}
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+            </m.div>
+          </m.div>
+        </m.div>
+      </m.div>
     </CardContainer>
   );
 };

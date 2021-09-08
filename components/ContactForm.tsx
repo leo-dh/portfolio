@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { motion, AnimatePresence, AnimateSharedLayout, Variants } from "framer-motion";
+import { m, AnimatePresence, AnimateSharedLayout, Variants } from "framer-motion";
 import { FormInputs } from "@shared/types";
 import { ContactIcon, GitHubIcon } from "./Icons";
 import LinkButton from "./LinkButton";
@@ -72,32 +72,32 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
     switch (formState) {
       case FormState.INITIAL: {
         return (
-          <motion.span {...fadeInMotionProps} key={FormState.INITIAL}>
+          <m.span {...fadeInMotionProps} key={FormState.INITIAL}>
             Submit
-          </motion.span>
+          </m.span>
         );
       }
       case FormState.LOADING: {
         return (
-          <motion.div
+          <m.div
             className="rounded-full border-4 border-t-4 border-primary-200 border-t-primary-500 h-6 w-6 animate-spin mr-2"
             key={FormState.LOADING}
             {...fadeInMotionProps}
-          ></motion.div>
+          ></m.div>
         );
       }
       case FormState.SUCCESS: {
         return (
-          <motion.span key={FormState.SUCCESS} {...fadeInMotionProps}>
+          <m.span key={FormState.SUCCESS} {...fadeInMotionProps}>
             You have left a message.
-          </motion.span>
+          </m.span>
         );
       }
       case FormState.ERROR: {
         return (
-          <motion.span key={FormState.ERROR} {...fadeInMotionProps}>
+          <m.span key={FormState.ERROR} {...fadeInMotionProps}>
             Huh... Try again in awhile.
-          </motion.span>
+          </m.span>
         );
       }
     }
@@ -106,17 +106,17 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
   return (
     <div className="flex flex-col h-full justify-center mt-8">
       <AnimateSharedLayout>
-        <motion.div className="flex flex-col max-w-screen-md" layout>
-          <motion.p className="text-base font-light italic border-l-4 border-gray-400 pl-2" layout>
+        <m.div className="flex flex-col max-w-screen-md" layout>
+          <m.p className="text-base font-light italic border-l-4 border-gray-400 pl-2" layout>
             Hey there, thanks for stopping by! If you wish to get in touch, feel free to leave me a
             message below.
-          </motion.p>
-          <motion.form onSubmit={handleSubmit(onSubmit)} layout>
-            <motion.div className="flex flex-col mt-8 " layout>
-              <motion.label htmlFor="EmailInput" className="tablet:text-lg" layout>
+          </m.p>
+          <m.form onSubmit={handleSubmit(onSubmit)} layout>
+            <m.div className="flex flex-col mt-8 " layout>
+              <m.label htmlFor="EmailInput" className="tablet:text-lg" layout>
                 Email
-              </motion.label>
-              <motion.input
+              </m.label>
+              <m.input
                 layout
                 type="text"
                 {...register("email", {
@@ -134,17 +134,17 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
               />
               <AnimatePresence>
                 {errors.email && (
-                  <motion.div {...fadeInMotionProps} className="text-sm text-gray-500">
+                  <m.div {...fadeInMotionProps} className="text-sm text-gray-500">
                     <span>{errors.email.message}</span>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
-            </motion.div>
-            <motion.div className="flex flex-col mt-4" layout>
-              <motion.label htmlFor="MessageInput" className="tablet:text-lg" layout>
+            </m.div>
+            <m.div className="flex flex-col mt-4" layout>
+              <m.label htmlFor="MessageInput" className="tablet:text-lg" layout>
                 Message
-              </motion.label>
-              <motion.textarea
+              </m.label>
+              <m.textarea
                 id="MessageInput"
                 {...register("message", {
                   required: {
@@ -154,16 +154,16 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
                 })}
                 className="rounded p-2 bg-shark-400 outline-none mt-1 h-28 tablet:h-40"
                 layout
-              ></motion.textarea>
+              ></m.textarea>
               <AnimatePresence>
                 {errors.message && (
-                  <motion.div {...fadeInMotionProps} className="text-sm text-gray-500">
+                  <m.div {...fadeInMotionProps} className="text-sm text-gray-500">
                     <span>{errors.message.message}</span>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
-            </motion.div>
-            <motion.button
+            </m.div>
+            <m.button
               className="rounded font-bold bg-primary-500 px-3 py-2 mt-4 text-shark-500 duration-300 ease-in-out hover:text-primary-500 hover:bg-shark-400 flex w-full justify-center items-center disabled:bg-shark-300 disabled:text-primary-500 disabled:cursor-not-allowed"
               type="submit"
               layout
@@ -172,15 +172,15 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
               <AnimatePresence exitBeforeEnter initial={false}>
                 <ButtonContent />
               </AnimatePresence>
-            </motion.button>
-          </motion.form>
+            </m.button>
+          </m.form>
 
-          <motion.span className="text-xs text-gray-500 mt-3 tablet:text-sm" layout>
+          <m.span className="text-xs text-gray-500 mt-3 tablet:text-sm" layout>
             I will try to respond within 3 working days. If the matter is urgent do consider sending
             me a direct email.
-          </motion.span>
-        </motion.div>
-        <motion.div className="flex justify-start mt-12 gap-2 tablet:mt-16 tablet:gap-4" layout>
+          </m.span>
+        </m.div>
+        <m.div className="flex justify-start mt-12 gap-2 tablet:mt-16 tablet:gap-4" layout>
           {LINKS.map(({ Icon, href, label }) => (
             <LinkButton
               label={label}
@@ -191,7 +191,7 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
               key={label}
             />
           ))}
-        </motion.div>
+        </m.div>
       </AnimateSharedLayout>
     </div>
   );

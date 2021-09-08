@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, AnimateSharedLayout, motion, Variants } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout, m, Variants } from "framer-motion";
 import { ProjectCard, MetaTags } from "@components";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 import { GetStaticProps } from "next";
@@ -59,7 +59,7 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
               />
             )}
           </AnimatePresence>
-          <motion.ul
+          <m.ul
             className="mt-8 gap-4 tablet:mt-12 grid grid-cols"
             transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}
             initial="initial"
@@ -75,7 +75,7 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
                 onClick={() => setSelectedId(index)}
               />
             ))}
-          </motion.ul>
+          </m.ul>
         </AnimateSharedLayout>
       </section>
     </>

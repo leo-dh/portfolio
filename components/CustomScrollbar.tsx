@@ -1,4 +1,4 @@
-import { motion, useElementScroll, useTransform } from "framer-motion";
+import { m, useElementScroll, useTransform } from "framer-motion";
 import {
   RefObject,
   useCallback,
@@ -71,7 +71,7 @@ export function useCustomScrollbar(
         handleDrag(e);
       }}
     >
-      <motion.div
+      <m.div
         className={`left-0 right-0 rounded-full absolute select-none`}
         id="scrollbar-thumb"
         style={{
@@ -91,7 +91,7 @@ export function useCustomScrollbar(
           transition: { duration: 0.3, delay: 0.2 },
         }}
         exit={{ opacity: 0, transition: { duration: 0.15 } }}
-      ></motion.div>
+      ></m.div>
     </div>
   );
 

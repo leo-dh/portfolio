@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { m, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import ROUTES from "@utils/routes";
 import { ContactIcon, PaperAirplaneIcon } from "../Icons";
@@ -70,26 +70,26 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
 
   return (
     <>
-      <motion.button
+      <m.button
         className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-primary-500`}
         onClick={toggleMenu}
         animate={isMenuOpen ? "open" : "close"}
       >
         <AnimatedMenuIcon className="text-gray-700 h-5 w-5" />
-      </motion.button>
+      </m.button>
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
+          <m.div
             className="fixed w-full h-full bg-black/60 z-10 cursor-pointer"
             id="overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.2 } }}
             onClick={toggleMenu}
-          ></motion.div>
+          ></m.div>
         )}
       </AnimatePresence>
-      <motion.nav
+      <m.nav
         className={`fixed overflow-hidden flex bottom-0 right-0 z-20 bg-primary-500 ${
           isMenuOpen ? "shadow-lg" : "shadow-md"
         }`}
@@ -100,7 +100,7 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
       >
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.ul
+            <m.ul
               className="flex flex-col justify-center items-center w-screen py-4 h-96 space-y-2 tracking-wider"
               variants={listVariants}
               initial="close"
@@ -109,7 +109,7 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
             >
               {ROUTES.map(({ href, title }) => {
                 return href === "/contact" ? (
-                  <motion.li key={href} variants={listItemVariants} custom={true}>
+                  <m.li key={href} variants={listItemVariants} custom={true}>
                     <Link href={href} scroll={false}>
                       <a className="flex uppercase font-semibold bg-primary-300 rounded-md overflow-hidden items-center mt-4">
                         <div className="bg-primary-700 p-2 text-white">
@@ -124,9 +124,9 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                         </span>
                       </a>
                     </Link>
-                  </motion.li>
+                  </m.li>
                 ) : (
-                  <motion.li
+                  <m.li
                     key={href}
                     variants={listItemVariants}
                     custom={pathname === href}
@@ -141,21 +141,21 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                     </Link>
 
                     {pathname === href && (
-                      <motion.div
+                      <m.div
                         className="absolute text-shark-500 top-1 bottom-0 -left-6 flex items-center"
                         layoutId="indicator"
                         initial={false}
                       >
                         <PaperAirplaneIcon className="rotate-90 h-4 w-4" />
-                      </motion.div>
+                      </m.div>
                     )}
-                  </motion.li>
+                  </m.li>
                 );
               })}
-            </motion.ul>
+            </m.ul>
           )}
         </AnimatePresence>
-      </motion.nav>
+      </m.nav>
     </>
   );
 };

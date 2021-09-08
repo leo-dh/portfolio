@@ -1,6 +1,6 @@
 import { useState, HTMLProps, useEffect } from "react";
 import Link from "next/link";
-import { AnimatePresence, AnimateSharedLayout, motion, Variants } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout, m, Variants } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { ChevronRightIcon } from "./Icons";
 import { ProjectMDXData } from "@lib/mdx";
@@ -41,15 +41,15 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
       <div className="flex items-end ml-8 tablet:ml-16">
         <h1 className="text-3xl font-bold uppercase font-futura tracking-wider">Projects </h1>
         <Link href="/projects" passHref>
-          <motion.a
+          <m.a
             className="font-normal tracking-wider ml-4 hover:text-primary-500 duration-300 ease-in-out text-gray-500 desktop:text-lg !leading-none"
             whileHover="hover"
           >
             more
-            <motion.div variants={svgVariants} className="inline-block desktop:ml-1">
+            <m.div variants={svgVariants} className="inline-block desktop:ml-1">
               <ChevronRightIcon className="h-3 w-3 inline desktop:stroke-4" />
-            </motion.div>
-          </motion.a>
+            </m.div>
+          </m.a>
         </Link>
       </div>
       <AnimateSharedLayout type="crossfade">

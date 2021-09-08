@@ -1,6 +1,6 @@
 import ROUTES from "@utils/routes";
 import Link from "next/link";
-import { AnimateSharedLayout, motion } from "framer-motion";
+import { AnimateSharedLayout, m } from "framer-motion";
 import { ContactIcon, PaperAirplaneIcon } from "../Icons";
 
 const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
@@ -49,13 +49,13 @@ const DesktopNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
                 </Link>
 
                 {pathname === href && (
-                  <motion.div
+                  <m.div
                     className="absolute text-shark-500 top-1 bottom-0 -left-10 flex items-center"
                     layoutId="indicator"
                     initial={false}
                   >
                     <PaperAirplaneIcon className="rotate-90" />
-                  </motion.div>
+                  </m.div>
                 )}
               </li>
             );

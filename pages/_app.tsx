@@ -1,5 +1,5 @@
 import { AppProps } from "next/app";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import "../styles/globals.css";
 import { Layout } from "@components";
 
@@ -7,7 +7,7 @@ const App = ({ Component, pageProps, router }: AppProps): JSX.Element => {
   return (
     <Layout>
       <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
-        <motion.div
+        <m.div
           key={router.pathname}
           initial="initial"
           animate="animate"
@@ -22,7 +22,7 @@ const App = ({ Component, pageProps, router }: AppProps): JSX.Element => {
           }}
         >
           <Component {...pageProps} />
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </Layout>
   );

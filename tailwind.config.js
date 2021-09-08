@@ -151,6 +151,7 @@ module.exports = {
               fontFamily: "Futura Now Var",
               fontWeight: weight,
               src: 'url("/fonts/FuturaNowVar.woff2") format("woff2")',
+              fontDisplay: "swap",
             },
           },
         ]);

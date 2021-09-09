@@ -1,11 +1,10 @@
 import { useState, HTMLProps } from "react";
 import Link from "next/link";
-import { AnimatePresence, AnimateSharedLayout, m, Variants } from "framer-motion";
+import { AnimateSharedLayout, m, Variants } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { ChevronRightIcon } from "./Icons";
 import { ProjectMDXData } from "@lib/mdx";
 import dynamic from "next/dynamic";
-import useScrollbarToggle from "@hooks/useScrollbarToggle";
 
 const ProjectModal = dynamic(() => import("./ProjectModal"), { ssr: false });
 
@@ -34,7 +33,6 @@ interface ProjectsSectionProps extends HTMLProps<HTMLElement> {
 
 const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
-  useScrollbarToggle(selectedId !== null);
 
   return (
     <section className={`flex flex-col py-12 ${className}`} {...props}>
@@ -53,15 +51,11 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
         </Link>
       </div>
       <AnimateSharedLayout type="crossfade">
-        <AnimatePresence exitBeforeEnter>
-          {selectedId !== null && (
-            <ProjectModal
-              index={selectedId}
-              callback={() => setSelectedId(null)}
-              project={projects[selectedId ?? 0]}
-            />
-          )}
-        </AnimatePresence>
+        <ProjectModal
+          index={selectedId}
+          callback={() => setSelectedId(null)}
+          project={projects[selectedId ?? 0]}
+        />
         <ul className="py-8 px-8 flex overflow-x-scroll hide-scrollbar space-x-4 tablet:px-16">
           {projects.slice(0, 3).map(({ data }, index) => (
             <ProjectCard

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { m } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { CrossIcon } from "./Icons";
 import { useCustomScrollbar } from "./CustomScrollbar";
 import { components } from "./MDXComponents";
@@ -13,17 +13,17 @@ interface ProjectModalProps {
   project: ProjectMDXData;
 }
 
-const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Element => {
+const Modal = ({ callback, index, project }: ProjectModalProps): JSX.Element => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [showScrollbar, Scrollbar] = useCustomScrollbar(containerRef);
+  useEffect(() => {
+    containerRef.current?.focus();
+  }, []);
 
   const {
     data: { image, tags, title },
     content,
   } = project;
-  useEffect(() => {
-    containerRef.current?.focus();
-  }, []);
   return (
     <>
       <m.div
@@ -43,12 +43,12 @@ const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Elem
           tabIndex={-1}
         >
           <m.div
-            className="p-2 bg-white absolute top-0 right-0 rounded-tr-lg rounded-bl-lg z-[61] cursor-pointer"
+            className="p-2 bg-white absolute top-0 right-0 rounded-tr-lg rounded-bl-lg z-[61] cursor-pointer desktop:rounded-tr-xl desktop:rounded-bl-xl"
             onClick={callback}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0, transition: { duration: 0.15 } }}
-            transition={{ duration: 0.3, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.25 }}
             tabIndex={0}
             onKeyPress={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -92,6 +92,35 @@ const ProjectModal = ({ callback, index, project }: ProjectModalProps): JSX.Elem
         </m.div>
       </div>
     </>
+  );
+};
+
+const ProjectModal = ({ index, ...props }: ProjectModalProps): JSX.Element => {
+  const scrollbarWidthRef = useRef(0);
+  useEffect(() => {
+    function setScrollbarWidth(): void {
+      scrollbarWidthRef.current = window.innerWidth - document.documentElement.clientWidth;
+    }
+    setScrollbarWidth();
+    window.addEventListener("resize", setScrollbarWidth);
+    return () => window.removeEventListener("resize", setScrollbarWidth);
+  }, []);
+
+  return (
+    <AnimatePresence
+      exitBeforeEnter
+      onExitComplete={() => {
+        document.body.style.overflow = index !== null ? "hidden" : "";
+        (document.querySelector("#layout") as HTMLDivElement).style.paddingRight =
+          index !== null ? `${scrollbarWidthRef.current}px` : "";
+      }}
+    >
+      {index !== null ? (
+        <Modal index={index} {...props} />
+      ) : (
+        <m.div key="none" className="hidden"></m.div>
+      )}
+    </AnimatePresence>
   );
 };
 

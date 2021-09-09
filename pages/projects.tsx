@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { AnimatePresence, AnimateSharedLayout, m, Variants } from "framer-motion";
+import { AnimateSharedLayout, m, Variants } from "framer-motion";
 import { ProjectCard, MetaTags } from "@components";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import useScrollbarToggle from "@hooks/useScrollbarToggle";
 
 const ProjectModal = dynamic(() => import("@components/ProjectModal"), { ssr: false });
 
@@ -35,7 +34,6 @@ const variants: Variants = {
 };
 const Projects = ({ projects }: ProjectsProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
-  useScrollbarToggle(selectedId !== null);
 
   return (
     <>
@@ -49,15 +47,11 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
         </h1>
 
         <AnimateSharedLayout type="crossfade">
-          <AnimatePresence>
-            {selectedId !== null && (
-              <ProjectModal
-                index={selectedId}
-                callback={() => setSelectedId(null)}
-                project={projects[selectedId ?? 0]}
-              />
-            )}
-          </AnimatePresence>
+          <ProjectModal
+            index={selectedId}
+            callback={() => setSelectedId(null)}
+            project={projects[selectedId ?? 0]}
+          />
           <m.ul
             className="mt-8 gap-4 tablet:mt-12 grid grid-cols"
             transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}

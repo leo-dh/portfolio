@@ -56,10 +56,16 @@ export function useCustomScrollbar(
   );
 
   const Scrollbar = (): JSX.Element => (
-    <div
+    <m.div
       className="absolute top-1 right-0.5 bottom-1 w-1.5 rounded-full z-[60]"
       id="scrollbar-track"
       ref={scrollbarTrackRef}
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { duration: 0.3, delay: 0.2 },
+      }}
+      exit={{ opacity: 0, transition: { duration: 0.15 } }}
       onMouseDown={(e) => {
         // Jump to clicked location
         if (!containerRef.current) return;
@@ -85,14 +91,8 @@ export function useCustomScrollbar(
         }}
         whileTap={{ background: "rgba(0,0,0,0.4)" }}
         whileHover={{ background: "rgba(0,0,0,0.3)" }}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { duration: 0.3, delay: 0.2 },
-        }}
-        exit={{ opacity: 0, transition: { duration: 0.15 } }}
       ></m.div>
-    </div>
+    </m.div>
   );
 
   return [showScrollbar, Scrollbar];

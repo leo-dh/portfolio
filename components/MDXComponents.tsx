@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/heading-has-content */
 import { HTMLProps, SVGProps } from "react";
 import LinkButton from "./LinkButton";
 import { ExternalLinkIcon, GitHubIcon } from "./Icons";

@@ -1,10 +1,11 @@
-import { useState, HTMLProps, useEffect } from "react";
+import { useState, HTMLProps } from "react";
 import Link from "next/link";
 import { AnimatePresence, AnimateSharedLayout, m, Variants } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { ChevronRightIcon } from "./Icons";
 import { ProjectMDXData } from "@lib/mdx";
 import dynamic from "next/dynamic";
+import useScrollbarToggle from "@hooks/useScrollbarToggle";
 
 const ProjectModal = dynamic(() => import("./ProjectModal"), { ssr: false });
 
@@ -33,9 +34,8 @@ interface ProjectsSectionProps extends HTMLProps<HTMLElement> {
 
 const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
-  useEffect(() => {
-    document.body.style.overflow = selectedId !== null ? "hidden" : "";
-  }, [selectedId]);
+  useScrollbarToggle(selectedId !== null);
+
   return (
     <section className={`flex flex-col py-12 ${className}`} {...props}>
       <div className="flex items-end ml-8 tablet:ml-16">

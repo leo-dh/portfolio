@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, AnimateSharedLayout, m, Variants } from "framer-motion";
 import { ProjectCard, MetaTags } from "@components";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
+import useScrollbarToggle from "@hooks/useScrollbarToggle";
 
 const ProjectModal = dynamic(() => import("@components/ProjectModal"), { ssr: false });
 
@@ -34,9 +35,7 @@ const variants: Variants = {
 };
 const Projects = ({ projects }: ProjectsProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
-  useEffect(() => {
-    document.body.style.overflow = selectedId !== null ? "hidden" : "";
-  }, [selectedId]);
+  useScrollbarToggle(selectedId !== null);
 
   return (
     <>

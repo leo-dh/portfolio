@@ -9,7 +9,7 @@ const features = (): Promise<FeatureBundle> =>
 const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
   return (
     <LazyMotion features={features} strict>
-      <div className="bg-primary-500">
+      <div className="bg-primary-500" id="layout">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           {/* <!-- Primary Meta Tags --> */}

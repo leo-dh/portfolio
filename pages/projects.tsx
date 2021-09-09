@@ -66,6 +66,7 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
                 autoSize
                 variants={variants}
                 onClick={() => setSelectedId(index)}
+                showBorder={selectedId !== index}
               />
             ))}
           </m.ul>

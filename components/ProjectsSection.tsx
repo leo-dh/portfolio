@@ -70,6 +70,7 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
                 }
               }}
               tabIndex={selectedId !== null ? -1 : 0}
+              showBorder={selectedId !== index}
             />
           ))}
           <ProjectCard.Empty className="desktop:hidden" />

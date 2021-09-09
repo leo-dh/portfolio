@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { m, HTMLMotionProps } from "framer-motion";
+import { m, HTMLMotionProps, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ChevronRightIcon } from "./Icons";
 
@@ -22,6 +22,7 @@ interface ProjectCardProps extends HTMLMotionProps<"li"> {
   image: string;
   corner?: boolean;
   autoSize?: boolean;
+  showBorder?: boolean;
 }
 
 const ProjectCard = ({
@@ -32,15 +33,27 @@ const ProjectCard = ({
   image,
   corner = false,
   autoSize = false,
+  showBorder = false,
   ...props
 }: ProjectCardProps): JSX.Element => {
   return (
-    <CardContainer className={`desktop:flex-1 ${className}`} {...props}>
+    <CardContainer className={`desktop:flex-1 relative ${className}`} {...props}>
+      <AnimatePresence initial={false}>
+        {showBorder && (
+          <m.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.6 } }}
+            className={`w-full h-full absolute border-2 border-gray-600 z-10 ${
+              corner ? "rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl" : "rounded-lg"
+            }`}
+          ></m.div>
+        )}
+      </AnimatePresence>
       <m.div
         className={`flex flex-col ${
           corner ? "rounded-tl-lg rounded-br-lg rounded-tr-3xl rounded-bl-3xl" : "rounded-lg"
         } ${autoSize ? "w-auto h-auto" : "w-64 h-64 tablet:w-72 tablet:h-72"}
-        overflow-hidden border-2 border-gray-600 aspect-ratio-1 desktop:h-auto desktop:w-auto`}
+        overflow-hidden aspect-ratio-1 desktop:h-auto desktop:w-auto`}
         layoutId={`card-${index}`}
         layout
       >

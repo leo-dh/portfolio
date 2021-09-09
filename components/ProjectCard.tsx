@@ -45,7 +45,7 @@ const ProjectCard = ({
         layout
       >
         <m.div className="h-full relative" layoutId={`image-${index}`}>
-          <Image src={image} layout="fill" objectFit="cover" />
+          <Image src={image} layout="fill" objectFit="cover" alt={`${title} preview`} />
           <m.div className="absolute flex flex-col text-white bg-gradient-to-t from-black/70 to-black/0 w-full py-4 px-4 bottom-0 left-0 justify-end h-full">
             <m.p className="font-bold desktop:text-lg">{title}</m.p>
             <m.div className="gap-2 flex flex-wrap items-center mt-2">

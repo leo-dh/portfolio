@@ -69,6 +69,7 @@ const TabletNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
         className={`fixed top-0 left-0 p-4 rounded-br-lg z-30 bg-primary-500`}
         onClick={toggleMenu}
         animate={isMenuOpen ? "open" : "close"}
+        aria-label="Navigation Menu"
       >
         <AnimatedMenuIcon className="text-gray-700 h-5 w-5" />
       </m.button>

@@ -42,7 +42,7 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
         <h1 className="text-3xl font-bold uppercase font-futura tracking-wider">Projects </h1>
         <Link href="/projects" passHref>
           <m.a
-            className="font-normal tracking-wider ml-4 hover:text-primary-500 duration-300 ease-in-out text-gray-500 desktop:text-lg !leading-none"
+            className="font-normal tracking-wider ml-4 hover:text-primary-500 duration-300 ease-in-out text-gray-400 desktop:text-lg !leading-none"
             whileHover="hover"
           >
             more
@@ -70,6 +70,12 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
               {...data}
               corner
               onClick={() => setSelectedId(index)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  setSelectedId(index);
+                }
+              }}
+              tabIndex={selectedId !== null ? -1 : 0}
             />
           ))}
           <ProjectCard.Empty className="desktop:hidden" />

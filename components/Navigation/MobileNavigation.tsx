@@ -74,6 +74,7 @@ const MobileNavigation = ({ pathname }: { pathname: string }): JSX.Element => {
         className={`fixed bottom-4 right-4 rounded-full p-4 z-30 bg-primary-500`}
         onClick={toggleMenu}
         animate={isMenuOpen ? "open" : "close"}
+        aria-label="Navigation Menu"
       >
         <AnimatedMenuIcon className="text-gray-700 h-5 w-5" />
       </m.button>

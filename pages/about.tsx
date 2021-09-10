@@ -4,6 +4,21 @@ import { GetStaticProps } from "next";
 import { Icon } from "@iconify/react";
 import { MDXRemote } from "next-mdx-remote";
 import { MDXContentTextLink } from "@components/MDXComponents";
+import { m, Variants } from "framer-motion";
+
+const variants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 50,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeOut",
+    },
+  },
+};
 
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
   return {
@@ -18,18 +33,23 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
         title="About Me - Leo Ding Hao"
         description="I enjoy creating simple scripts and tools to automate the simple things in life! My other interests and skills are also listed on the page. "
       />
-      <section className="flex flex-col justify-center min-h-screen px-8 py-12 tablet:p-16 max-w-screen-lg">
+      <m.section
+        className="flex flex-col justify-center min-h-screen px-8 py-12 tablet:p-16 max-w-screen-lg"
+        initial="initial"
+        animate="animate"
+        transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}
+      >
         <h1 className="text-4xl font-extrabold uppercase tracking-wider font-futura text-primary-500">
           About Me
         </h1>
         <div className="mt-12 space-y-20">
-          <div>
+          <m.div variants={variants}>
             <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">Bio</h2>
             <div className="mt-4 space-y-8 flex flex-col">
               <MDXRemote {...info} components={{ TextLink: MDXContentTextLink }} />
             </div>
-          </div>
-          <div>
+          </m.div>
+          <m.div variants={variants}>
             <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">
               Technical Skills
             </h2>
@@ -53,8 +73,8 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
                 );
               })}
             </div>
-          </div>
-          <div className="mt-12">
+          </m.div>
+          <m.div className="mt-12" variants={variants}>
             <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">Timeline</h2>
             <ul className="mt-8 space-y-4">
               {timeline.map(({ start, end, description, institution }, index) => (
@@ -70,9 +90,9 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
                 </li>
               ))}
             </ul>
-          </div>
+          </m.div>
         </div>
-      </section>
+      </m.section>
     </>
   );
 };

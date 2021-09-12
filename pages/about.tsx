@@ -11,6 +11,7 @@ import { fadeInBottom } from "@shared/variants";
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
   return {
     props: await getAboutMe(),
+    revalidate: 300,
   };
 };
 

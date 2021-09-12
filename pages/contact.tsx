@@ -11,6 +11,7 @@ export const getStaticProps: GetStaticProps<ContactProps> = async () => {
     props: {
       links: await getLinks(),
     },
+    revalidate: 300,
   };
 };
 

@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       projects: await getAllProjects(),
       links: await getLinks(),
     },
+    revalidate: 300,
   };
 };
 

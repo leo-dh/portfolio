@@ -1,14 +1,17 @@
 import { ReactNode } from "react";
 import Head from "next/head";
-import { FeatureBundle, LazyMotion } from "framer-motion";
+import { domMax, LazyMotion } from "framer-motion";
 import Navigation from "./Navigation";
 
-const features = (): Promise<FeatureBundle> =>
-  import("@lib/framermotion-features").then((res) => res.default);
+// https://github.com/framer/motion/issues/1056
+// Navigation Indicator animation does not work with async loading
+// const features = (): Promise<FeatureBundle> =>
+//   import("@lib/framermotion-features").then((res) => res.default);
 
 const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
+  console.log("LAYOUT RENDER");
   return (
-    <LazyMotion features={features} strict>
+    <LazyMotion features={domMax} strict>
       <div className="bg-primary-500" id="layout">
         <Head>
           <link rel="icon" href="/favicon.ico" />

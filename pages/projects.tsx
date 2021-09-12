@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { AnimateSharedLayout, m, Variants } from "framer-motion";
+import { AnimateSharedLayout, m } from "framer-motion";
 import { ProjectCard, MetaTags } from "@components";
 import { getAllProjects, ProjectMDXData } from "@lib/mdx";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
+import { fadeInBottom } from "@shared/variants";
 
 const ProjectModal = dynamic(() => import("@components/ProjectModal"), { ssr: false });
 
@@ -19,19 +20,6 @@ export const getStaticProps: GetStaticProps<ProjectsProps> = async () => {
   };
 };
 
-const variants: Variants = {
-  initial: {
-    opacity: 0,
-    y: 40,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeOut",
-    },
-  },
-};
 const Projects = ({ projects }: ProjectsProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
 
@@ -64,8 +52,14 @@ const Projects = ({ projects }: ProjectsProps): JSX.Element => {
                 key={index}
                 {...data}
                 autoSize
-                variants={variants}
+                variants={fadeInBottom}
                 onClick={() => setSelectedId(index)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    setSelectedId(index);
+                  }
+                }}
+                tabIndex={selectedId !== null ? -1 : 0}
                 showBorder={selectedId !== index}
               />
             ))}

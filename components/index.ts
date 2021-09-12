@@ -8,5 +8,4 @@ export { default as ProjectModal } from "./ProjectModal";
 export { default as ContactForm } from "./ContactForm";
 export { default as LinkButton } from "./LinkButton";
 export { default as MetaTags } from "./MetaTags";
-export { default as FadeInProvider } from "./FadeInProvider";
 export * from "./Icons";

@@ -1,10 +1,12 @@
 import { getAboutMe, AboutProps } from "@lib/mdx";
-import { MetaTags, FadeInProvider } from "@components";
+import { MetaTags } from "@components";
 import { GetStaticProps } from "next";
 import { Icon } from "@iconify/react";
 import { MDXRemote } from "next-mdx-remote";
 import { MDXContentTextLink } from "@components/MDXComponents";
 import { m } from "framer-motion";
+import { InView } from "react-intersection-observer";
+import { fadeInBottom } from "@shared/variants";
 
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
   return {
@@ -24,10 +26,10 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
           About Me
         </h1>
         <div className="mt-12 space-y-20">
-          <FadeInProvider>
-            {(props) => {
+          <InView triggerOnce>
+            {({ inView, ref }) => {
               return (
-                <m.div {...props}>
+                <m.div ref={ref} variants={fadeInBottom} animate={inView ? "animate" : "initial"}>
                   <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">Bio</h2>
                   <div className="mt-4 space-y-8 flex flex-col">
                     <MDXRemote {...info} components={{ TextLink: MDXContentTextLink }} />
@@ -35,11 +37,11 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
                 </m.div>
               );
             }}
-          </FadeInProvider>
+          </InView>
 
-          <FadeInProvider>
-            {(props) => (
-              <m.div {...props}>
+          <InView triggerOnce>
+            {({ inView, ref }) => (
+              <m.div ref={ref} variants={fadeInBottom} animate={inView ? "animate" : "initial"}>
                 <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">
                   Technical Skills
                 </h2>
@@ -65,10 +67,15 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
                 </div>
               </m.div>
             )}
-          </FadeInProvider>
-          <FadeInProvider>
-            {(props) => (
-              <m.div className="mt-12" {...props}>
+          </InView>
+          <InView triggerOnce>
+            {({ ref, inView }) => (
+              <m.div
+                className="mt-12"
+                ref={ref}
+                variants={fadeInBottom}
+                animate={inView ? "animate" : "initial"}
+              >
                 <h2 className="text-3xl font-bold uppercase font-futura tracking-wider">
                   Timeline
                 </h2>
@@ -88,7 +95,7 @@ const About = ({ info, technicalSkills, timeline }: AboutProps): JSX.Element => 
                 </ul>
               </m.div>
             )}
-          </FadeInProvider>
+          </InView>
         </div>
       </m.section>
     </>

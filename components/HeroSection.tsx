@@ -1,20 +1,7 @@
-import { HTMLMotionProps, m, Variants } from "framer-motion";
+import { HTMLMotionProps, m } from "framer-motion";
 import { HandWavingIcon } from "./Icons";
 import { Links } from "@lib/mdx";
-
-const variants: Variants = {
-  initial: {
-    opacity: 0,
-    y: 50,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeOut",
-    },
-  },
-};
+import { fadeInBottom } from "@shared/variants";
 
 interface HeroSectionProps extends HTMLMotionProps<"section"> {
   links: Links;
@@ -29,7 +16,7 @@ const HeroSection = ({ links, className, ...props }: HeroSectionProps): JSX.Elem
       initial="initial"
       animate="animate"
     >
-      <m.div className="flex items-center" variants={variants}>
+      <m.div className="flex items-center" variants={fadeInBottom}>
         <h1 className="font-bold text-5xl tablet:text-6xl desktop:text-7xl text-primary-500">
           Hey there
         </h1>
@@ -40,14 +27,14 @@ const HeroSection = ({ links, className, ...props }: HeroSectionProps): JSX.Elem
       </m.div>
 
       <m.p
-        variants={variants}
+        variants={fadeInBottom}
         className="mt-4 text-lg font-semibold tablet:text-xl desktop:text-2xl desktop:mt-6"
       >
         My name is Leo Ding Hao.{" "}
       </m.p>
 
       <m.p
-        variants={variants}
+        variants={fadeInBottom}
         className="mt-6 font-light tablet:text-lg desktop:text-xl desktop:mt-8"
       >
         I am an aspiring software engineer who is interested in front-end development.

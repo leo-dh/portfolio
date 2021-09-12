@@ -5,6 +5,8 @@ import ProjectCard from "./ProjectCard";
 import { ChevronRightIcon } from "./Icons";
 import { ProjectMDXData } from "@lib/mdx";
 import dynamic from "next/dynamic";
+import { useInView } from "react-intersection-observer";
+import { fadeInBottom } from "@shared/variants";
 
 const ProjectModal = dynamic(() => import("./ProjectModal"), { ssr: false });
 
@@ -33,9 +35,10 @@ interface ProjectsSectionProps extends HTMLProps<HTMLElement> {
 
 const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps): JSX.Element => {
   const [selectedId, setSelectedId] = useState<null | number>(null);
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
 
   return (
-    <section className={`flex flex-col py-12 ${className}`} {...props}>
+    <section className={`flex flex-col py-12 ${className}`} ref={ref} {...props}>
       <div className="flex items-end ml-8 tablet:ml-16">
         <h1 className="text-3xl font-bold uppercase font-futura tracking-wider">Projects </h1>
         <Link href="/projects" passHref>
@@ -56,13 +59,18 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
           callback={() => setSelectedId(null)}
           project={projects[selectedId ?? 0]}
         />
-        <ul className="py-8 px-8 flex overflow-x-scroll hide-scrollbar space-x-4 tablet:px-16">
+        <m.ul
+          className="py-8 px-8 flex overflow-x-scroll hide-scrollbar space-x-4 tablet:px-16"
+          transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}
+          animate={inView ? "animate" : "initial"}
+        >
           {projects.slice(0, 3).map(({ data }, index) => (
             <ProjectCard
               index={index}
               key={data.title}
               {...data}
               corner
+              variants={fadeInBottom}
               onClick={() => setSelectedId(index)}
               onKeyPress={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -73,8 +81,8 @@ const ProjectsSection = ({ projects, className, ...props }: ProjectsSectionProps
               showBorder={selectedId !== index}
             />
           ))}
-          <ProjectCard.Empty className="desktop:hidden" />
-        </ul>
+          <ProjectCard.Empty className="desktop:hidden" variants={fadeInBottom} />
+        </m.ul>
       </AnimateSharedLayout>
     </section>
   );

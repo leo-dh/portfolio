@@ -9,7 +9,6 @@ import Navigation from "./Navigation";
 //   import("@lib/framermotion-features").then((res) => res.default);
 
 const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
-  console.log("LAYOUT RENDER");
   return (
     <LazyMotion features={domMax} strict>
       <div className="bg-primary-500" id="layout">

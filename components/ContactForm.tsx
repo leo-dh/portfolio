@@ -59,7 +59,7 @@ const ContactForm = ({ links }: ContactFormProps): JSX.Element => {
       body: JSON.stringify(data),
     });
     if (res.status === 200) {
-      setFormState(FormState.ERROR);
+      setFormState(FormState.SUCCESS);
     } else {
       setFormState(FormState.ERROR);
     }

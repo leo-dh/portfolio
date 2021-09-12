@@ -22,7 +22,11 @@ telegramBot.launch();
 process.on("SIGINT", () => telegramBot.stop("SIGINT"));
 process.on("SIGTERM", () => telegramBot.stop("SIGTERM"));
 
-const runMiddleware = (req: NextApiRequest, res: NextApiResponse, fn: any): Promise<unknown> => {
+const runMiddleware = <T extends CallableFunction>(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  fn: T
+): Promise<unknown> => {
   return new Promise((resolve, reject) => {
     fn(req, res, (result: unknown) => {
       if (result instanceof Error) {
